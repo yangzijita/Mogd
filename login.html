@@ -100,10 +100,14 @@
 		  color: #EF3B3A;
 		}
 		body {
-		  background: url(https://api.ly522.com/random/api.php) repeat fixed center;
+		  background: url(https://api.ly522.com/random/api.php);
 		  font-family: "Roboto", sans-serif;
 		  -webkit-font-smoothing: antialiased;
 		  -moz-osx-font-smoothing: grayscale;      
+		  -moz-background-size: cover; /*背景图片拉伸以铺满全屏*/
+		-ms-background-size: cover;
+-webkit-background-size: cover;
+background-size: cover;
 		}
 		
 		
@@ -155,7 +159,7 @@
 <body>
 	<div class="htmleaf-container">
 		<header class="htmleaf-header">
-			<h1>Test</h1>
+			<h1>Mogd</h1>
 			<div class="htmleaf-links">
 				<a class="htmleaf-icon icon-htmleaf-home-outline" href="#" title="主页" target="_blank"><span>主页 </span></a>
 				<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="#" title="" target="_blank"><span> 返回上页</span></a>
@@ -169,13 +173,17 @@
 		      <input type="repassword" placeholder="重复密码" id="re_password" />
 		      <input type="text" placeholder="QQ" id="r_qq"/>
 			  <input type="text" id="r_verification"  placeholder="请输入验证码"> 
+			  <input type="image" id="yzm" src="images/yzmzw.png" />
 			  <input type="text"  id="r_phone" placeholder="请输入手机号" />
+			  <input type="text" id="r_yzm" placeholder="手机短信验证码" />
 		      <button id="create">创建账户</button>
 		      <p class="message">已经有了一个账户? <a href="#">立刻登录</a></p>
 		    </form>
 		    <form class="login-form">
 		      <input type="text" placeholder="用户名" id="user_name"/>
 		      <input type="password" placeholder="密码" id="password"/>
+			 <input type="text"  id="yz" placeholder="验证码" />
+			 <input type="image" src="images/yzmzw.png" />
 		      <button id="login">登　录</button>
 		      <p class="message">还没有账户? <a href="#">立刻创建</a></p>
 		    </form>
