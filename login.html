@@ -198,9 +198,43 @@ background-size: cover;
 	{
 	 var name=$("#user_name").val();
 	 var pass=$("#password").val();
+	 if (!name||!pass) {
+	 	return
+		alert('用户名密码不为空')
+	 } 
+	 $.ajax({
+        async : true,    //表示请求是否异步处理
+        type : "post",    //请求类型 POST GET PUT DELETE 
+        url : "www.xxx.com/login",//请求的 URL地址
+		
+        dataType : "json",//返回的数据类型
+        success: function (data) {   // HTTP STATE CODE 200 201 
+		if(data.status === 1){
+			console.log(data);  //在控制台打印服务器端返回的数据
+			for(var i=0;i<data.length;i++){
+			    console.log(data[i].deptId+" "+data[i].deptName);
+			}
+			  $("select[name='depertmentId']").empty();
+			  $("select[name='depertmentId']").append('<option value="">——请选择——</option>');
+			  for(var i=0;i<data.length;i++){
+			      var html ='<option value="'+data[i].deptId+'">';
+			      html +=data[i].deptName + '</option>';
+			      $("select[name='departmentId']").append(html);  //将数据显示在html页面
+			  }
+		}else{
+			 alert(data.result);
+		}
+          
+        },
+        // error:function (data) {
+        //     alert(data.result);
+        // }
+    }); 
+	
 	 if(name=="test" && pass=="test")
 	 {
 	  alert("登录成功！");
+	  location.href ='./admin/index.html';
 	  $("#user_name").val("");
 	  $("#password").val("");
 
