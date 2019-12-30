@@ -40,7 +40,7 @@
             <input type="text" placeholder="用户名" id="user_name" />
             <input type="password" placeholder="密码" id="password" />
             <div class="dlu">
-              <input type="text" id="yz" placeholder="验证码" />
+              <input type="text" id="yzm" placeholder="验证码" />
               <img
                 type="image"
                 id="dl-yzmimg"
@@ -62,6 +62,54 @@
 			this.src = 'http://localhost:8081/1x/no1-5/captcha.php?r=' + Math.random();
 		}
 	</script>
-    
+    <script>
+      $("#login").click(function () {
+          var dic = {
+            user_name: $("#user_name").val(),
+            password: $("#password").val(),
+            yzm: $("#yzm").val(),
+          };
+          if (dic.user_name == null || dic.user_name == "") {
+              alert("账号null");
+          } else if (dic.password == null || dic.password== "") {
+              alert("mima1 null");
+          } else if (dic.yzm == null || dic.yzm == "") {
+              alert("mima1 null");
+          }else {
+              console.log(dic);
+              // 将获取的字符串转换为 json数据
+              var msg = JSON.stringify(dic);
+              // var $test = $(".test");
+              // ajax发送
+              $.ajax({
+                  // 发送到的地址
+                  url: "/chaee.php",
+                  //请求方式
+                  type: "post",
+                  //指定请求的数据格式为json
+                  contentType: "application/json",
+                  // 数据
+                  data: msg,
+                  //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
+                  dataType: "json",
+                  success: function (res) {
+                      data = JSON.parse(res);
+                      if (data == "2") {
+                          $test.text("登录失败!");
+                      } else if (data == "1") {
+                          location.href = "https://www.baidu.com/";
+                      }
+                  },
+                  error: function () {
+                      console.log("请求出错！");
+                  }
+              });
+
+          }
+
+
+
+      });
+  </script>
   </body>
 </html>
