@@ -243,47 +243,46 @@
 </body>
 <script>
     $("#btnyzm").click(function () {
-        alert('1');
-        // var dic = {
-        //     passwd: $("#passwd").val(),
-        //     unpasswd: $("#unpasswd").val(),
-        //     qq: $("#qq").val(),
-        //     phone: $("#phone").val(),
-        //     check_code: $("#check_code").val()
-        // };
-        // console.log(dic);
+        // alert('1');
+        var dic = {
+            passwd: $("#passwd").val(),
+            unpasswd: $("#unpasswd").val(),
+            qq: $("#qq").val(),
+            phone: $("#phone").val(),
+            check_code: $("#check_code").val()
+        };
+        console.log(dic);
         // 将获取的字符串转换为 json数据
-        // var msg = JSON.stringify(dic);
+        var msg = JSON.stringify(dic);
         // var $test = $(".test");
         // ajax发送
-        // $.ajax({
-        //     // 发送到的地址
-        //     url: "./IndexViews/SendCode/",
-        //     //请求方式
-        //     type: "post",
-        //     //指定请求的数据格式为json
-        //     contentType: "application/json",
-        //     // 数据
-        //     data: msg,
-        //     //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
-        //     dataType: "json",
-        //     success: function (res) {
-        //         console.log(res);
-        //         rs = res;
-        //         if (rs.status != 200) {
-        //             alert(rs.data[0].info);
-        //         } else if (rs.status == 200) {
-        //             alert(rs.data[0].info);
-        //             // location.href = "https://www.baidu.com/";
-        //         }
+        $.ajax({
+            // 发送到的地址
+            url: "./IndexViews/SendCode/",
+            //请求方式
+            type: "post",
+            //指定请求的数据格式为json
+            contentType: "application/json",
+            // 数据
+            data: msg,
+            //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
+            dataType: "json",
+            success: function (res) {
+                console.log(res);
+                rs = res;
+                if (rs.status != 200) {
+                    alert(rs.data[0].info);
+                } else if (rs.status == 200) {
+                    alert(rs.data[0].info);
+                    // location.href = "https://www.baidu.com/";
+                }
+            },
+            error: function () {
+                console.log("请求出错！");
+            }
+        });
 
-        //     },
-        //     error: function () {
-        //         console.log("请求出错！");
-        //     }
-        // });
-
-    }
+    });
 </script>
 
 </html>
