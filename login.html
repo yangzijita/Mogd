@@ -1,115 +1,102 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>登录/注册</title>
-    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css" />
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/jquery.code.js"></script>
-    <link rel="stylesheet" href="css/login.css" />
-	
-  </head>
 
-  <body>
-    <div class="htmleaf-container">
-      <header class="htmleaf-header">
-        <h1>Mogd</h1>
-        <div class="htmleaf-links">
-          <a
-            class="htmleaf-icon icon-htmleaf-home-outline"
-            href="#"
-            title="主页"
-            target="_blank"
-            ><span>主页 </span></a
-          >
-          <a
-            class="htmleaf-icon icon-htmleaf-arrow-forward-outline"
-            href="#"
-            title=""
-            target="_blank"
-            ><span> 返回上页</span></a
-          >
-        </div>
-      </header>
-      <div id="wrapper" class="login-page">
-        <div id="login_form" class="form">
-          <form class="login-form">
-            <input type="text" placeholder="用户名" id="user_name" />
-            <input type="password" placeholder="密码" id="password" />
-            <div class="dlu">
-              <input type="text" id="yzm" placeholder="验证码" />
-              <img
-                type="image"
-                id="dl-yzmimg"
-                src="http://localhost:8081/1x/no1-5/captcha.php"
-              />
-            </div>
-            <input id="login" type="button" value="登　录"></input>
-            <p class="message">
-              还没有账户? <a href="register.html">立刻创建</a>
-            </p>
-          </form>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>登录/注册</title>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css" />
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <!-- <script src="js/jquery.code.js"></script> -->
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+
+<body>
+  <div class="htmleaf-container">
+    <header class="htmleaf-header">
+      <h1>Mogd</h1>
+      <div class="htmleaf-links">
+        <a class="htmleaf-icon icon-htmleaf-home-outline" href="#" title="主页" target="_blank"><span>主页 </span></a>
+        <a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="#" title="" target="_blank"><span>
+            返回上页</span></a>
       </div>
-	</div>
-	<script>
-		var verifyImage = document.getElementById('dl-yzmimg');
-		verifyImage.onclick = function () {
-			// 在（2）处使用Math对象随机生成一个0-1小数，实现点击刷新
-			this.src = 'http://localhost:8081/1x/no1-5/captcha.php?r=' + Math.random();
-		}
-	</script>
-    <script>
-      $("#login").click(function () {
-          var dic = {
-            user_name: $("#user_name").val(),
-            password: $("#password").val(),
-            yzm: $("#yzm").val(),
-          };
-          if (dic.user_name == null || dic.user_name == "") {
-              alert("账号null");
-          } else if (dic.password == null || dic.password== "") {
-              alert("mima1 null");
-          } else if (dic.yzm == null || dic.yzm == "") {
-              alert("mima1 null");
-          }else {
-              console.log(dic);
-              // 将获取的字符串转换为 json数据
-              var msg = JSON.stringify(dic);
-              // var $test = $(".test");
-              // ajax发送
-              $.ajax({
-                  // 发送到的地址
-                  url: "/chaee.php",
-                  //请求方式
-                  type: "post",
-                  //指定请求的数据格式为json
-                  contentType: "application/json",
-                  // 数据
-                  data: msg,
-                  //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
-                  dataType: "json",
-                  success: function (res) {
-                      data = JSON.parse(res);
-                      if (data == "2") {
-                          $test.text("登录失败!");
-                      } else if (data == "1") {
-                          location.href = "https://www.baidu.com/";
-                      }
-                  },
-                  error: function () {
-                      console.log("请求出错！");
-                  }
-              });
-
-          }
-
-
-
-      });
+    </header>
+    <div id="wrapper" class="login-page">
+      <div id="login_form" class="form">
+        <form class="login-form">
+          <input type="text" placeholder="手机号" id="phone" />
+          <input type="password" autocomplete="new-password" placeholder="密码" id="passwd" />
+          <div class="dlu">
+            <input type="text" id="check_code" placeholder="验证码" />
+            <img type="image" id="dl-yzmimg" src="./IndexViews/CheckCode/" />
+          </div>
+          <input id="login" type="button" value="登　录"></input>
+          <p class="message">
+            还没有账户? <a href="register.html">立刻创建</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- 验证码刷新 -->
+  <script>
+    var verifyImage = document.getElementById('dl-yzmimg');
+    verifyImage.onclick = function () {
+      // 在（2）处使用Math对象随机生成一个0-1小数，实现点击刷新
+      this.src = './IndexViews/CheckCode/?r=' + Math.random();
+    }
   </script>
-  </body>
+
+  <script>
+    $("#login").click(function () {
+      var dic = {
+        phone: $("#phone").val(),
+        passwd: $("#passwd").val(),
+        check_code: $("#check_code").val(),
+      };
+      if (dic.phone == null || dic.phone == "") {
+        alert("账号null");
+      } else if (dic.passwd == null || dic.passwd == "") {
+        alert("mima1 null");
+      } else if (dic.check_code == null || dic.check_code == "") {
+        alert("mima1 null");
+      } else {
+        // console.log(dic);
+        // 将获取的字符串转换为 json数据
+        var msg = JSON.stringify(dic);
+        // var $test = $(".test");
+        // ajax发送
+
+        $.ajax({
+          // 发送到的地址
+          url: "./IndexViews/Login/",
+          //请求方式
+          type: "post",
+          //指定请求的数据格式为json
+          contentType: "application/json",
+          // 数据
+          data: msg,
+          //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
+          dataType: "json",
+          success: function (res) {
+            // console.log(res);
+            data = res;
+            if (data.status == "200") {
+              alert(data.data[0].info);
+              location.href = "https://www.baidu.com/";
+            } else if (data.status == "400") {
+              alert(data.data[0].info);
+            }
+          },
+          error: function () {
+            console.log("请求出错！");
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>

@@ -38,18 +38,19 @@
                         验证码   r_verification
                        手机验证码         r_phoneyzm
                -->
-                    <input type="text" placeholder="用户名" id="r_user_name" />
-                    <input type="password" placeholder="密码" id="r_pwd" />
-                    <input type="repassword" placeholder="重复密码" id="re_pwd" />
-                    <input type="text" placeholder="QQ" id="r_qq" />
-                    <input type="text" id="r_phone" placeholder="请输入手机号" />
+                    <input type="text" id="phone" placeholder="请输入手机号" />
+                    <!-- <input type="text" placeholder="用户名" id="r_user_name" /> -->
+                    <input type="password" autocomplete="new-password" placeholder="密码" id="passwd" />
+                    <input type="password" autocomplete="new-password" placeholder="重复密码" id="unpasswd" />
+                    <input type="text" placeholder="QQ" id="qq" />
+
                     <div class="yzm-div">
-                        <input type="text" id="r_verification" placeholder="请输入验证码" />
-                        <img type="image" id="yzmimg" src="http://localhost:8081/1x/no1-5/captcha.php" />
+                        <input type="text" id="check_code" placeholder="请输入验证码" />
+                        <img type="image" id="yzmimg" src="./IndexViews/CheckCode/" />
                     </div>
                     <div class="phoneyz">
-                        <input type="text" id="r_phoneyzm" placeholder="手机短信验证码" />
-                        <input id="phonebtn" type="button" value="获取验证码"></input>
+                        <input type="text" id="phone_code" placeholder="手机短信验证码" />
+                        <input id="btnyzm" type="button" value="获取验证码"></input>
                     </div>
                     <input id="create" type="button" value="注册"></input>
                     <p class="message">
@@ -60,61 +61,39 @@
         </div>
     </div>
 
-    <!-- 验证码随机 -->
-    <script>
-        var verifyImage = document.getElementById('yzmimg');
-        verifyImage.onclick = function () {
-            // 在（2）处使用Math对象随机生成一个0-1小数，实现点击刷新
-            this.src = 'http://localhost:8081/1x/no1-5/captcha.php?r=' + Math.random();
-        }
-    </script>
-    <script>
-        $("#create").click(function () {
-            var dic = {
-                r_user_name: $("#r_user_name").val(),
-                r_pwd: $("#r_pwd").val(),
-                re_pwd: $("#re_pwd").val(),
-                r_qq: $("#r_qq").val(),
-                r_phone: $("#r_phone").val(),
-                r_verification: $("#r_verification").val(),
-                r_phoneyzm: $("#r_phoneyzm").val()
-            };
-            if (dic.r_user_name == null || dic.r_user_name == "") {
-                alert("账号null");
-            } else if (dic.r_pwd == null || dic.r_pwd == "") {
-                alert("mima1 null");
-            } else if (dic.re_pwd == null || dic.re_pwd == "") {
-                alert("mima1 null");
-            }
-                    /**校验确认密码*/
-                    else if(dic.re_pwd != dic.re_pwd ){
-                        alert('2次密码不一样');
-
-}
 
 
-            else if (dic.r_qq == null || dic.r_qq == "") {
-                alert("mima1 null");
-            } 
-    
-            
-            
-            else if (dic.r_phone == null || dic.r_phone == "") {
-                alert("mima1 null");
-            } else if (dic.r_verification == null || dic.r_verification == "") {
-                alert("mima1 null");
-            }
-            else if (dic.r_phoneyzm == null || dic.r_phoneyzm == "") {
-                alert("mima1 null");
-            } else {
-                console.log(dic);
-                // 将获取的字符串转换为 json数据
+
+
+    <!-- <script>
+        // 定义按钮btn
+        var btn = $("#phonebtn");
+
+        // 定义发送时间间隔(s)
+        var SEND_INTERVAL = 60;
+        var timeLeft = SEND_INTERVAL;
+
+        /**
+        * 绑定btn按钮的监听事件
+        */
+        var bindBtn = function () {
+            btn.click(function () {
+                // 需要先禁用按钮（为防止用户重复点击）
+                btn.unbind('click');
+                btn.attr('disabled', 'disabled');
+                var dic = {
+                    passwd: $("#passwd").val(),
+                    unpasswd: $("#unpasswd").val(),
+                    qq: $("#qq").val(),
+                    phone: $("#phone").val(),
+                    check_code: $("#check_code").val()
+                };
                 var msg = JSON.stringify(dic);
-                // var $test = $(".test");
-                // ajax发送
                 $.ajax({
+                    // ajax接口调用...
                     // 发送到的地址
-                    url: "/chaee.php",
+
+                    url: "./IndexViews/SendCode/",
                     //请求方式
                     type: "post",
                     //指定请求的数据格式为json
@@ -124,12 +103,130 @@
                     //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
                     dataType: "json",
                     success: function (res) {
-                        data = JSON.parse(res);
-                        if (data == "2") {
-                            $test.text("登录失败!");
-                        } else if (data == "1") {
+                        console.log(res);
+                        rs = res;
+                        if (rs.status != 200) {
+                            alert(rs.data[0].info);
+                        } else if (rs.status == 200) {
+                            alert(rs.data[0].info);
+                        }
+                    },
+                    error: function () {
+                        console.log("请求出错！");
+                    }
+                })
+                    .done(function () {
+                        alert('发送成功');
+                        //成功
+                        timeLeft = SEND_INTERVAL;
+                        timeCount();
+                    })
+                    .fail(function () {
+                        //失败，弹窗
+                        alert('发送失败');
+
+                        // ** 重要：因为发送失败，所以要恢复发送按钮的监听 **
+                        bindBtn();
+                        btn.remove('disabled');
+                    });
+            })
+        }
+
+        /**
+        * 重新发送计时
+        **/
+
+        var timeCount = function () {
+            window.setTimeout(function () {
+                if (timeLeft > 0) {
+                    timeLeft -= 1;
+                    btn.html(timeLeft + "后重新发送");
+                    timeCount();
+                } else {
+                    btn.html("重新发送");
+                    bindBtn();
+                }
+            }, 1000);
+        }
+    </script> -->
+
+
+
+
+
+
+    <!-- 验证码随机 -->
+    <script>
+        var verifyImage = document.getElementById('yzmimg');
+        verifyImage.onclick = function () {
+            // 在（2）处使用Math对象随机生成一个0-1小数，实现点击刷新
+            this.src = './IndexViews/CheckCode/?r=' + Math.random();
+        }
+    </script>
+    <script>
+        $("#create").click(function () {
+            var dic = {
+                passwd: $("#passwd").val(),
+                unpasswd: $("#unpasswd").val(),
+                qq: $("#qq").val(),
+                phone: $("#phone").val(),
+                check_code: $("#check_code").val(),
+                phone_code: $("#phone_code").val()
+            };
+            if (dic.r_user_name == null || dic.r_user_name == "") {
+                alert("账号null");
+            } else if (dic.passwd == null || dic.passwd == "") {
+                alert("mima1 null");
+            } else if (dic.unpasswd == null || dic.unpasswd == "") {
+                alert("mima1 null");
+            }
+            /**校验确认密码*/
+            else if (dic.passwd != dic.unpasswd) {
+                alert('2次密码不一样');
+
+            }
+
+
+            else if (dic.qq == null || dic.qq == "") {
+                alert("mima1 null");
+            }
+
+
+
+            else if (dic.phone == null || dic.phone == "") {
+                alert("mima1 null");
+            } else if (dic.check_code == null || dic.check_code == "") {
+                alert("mima1 null");
+            }
+            else if (dic.phone_code == null || dic.phone_code == "") {
+                alert("mima1 null");
+            } else {
+                console.log(dic);
+                // 将获取的字符串转换为 json数据
+                var msg = JSON.stringify(dic);
+                // var $test = $(".test");
+                // ajax发送
+                $.ajax({
+                    // 发送到的地址
+                    url: "./IndexViews/Regist/",
+                    //请求方式
+                    type: "post",
+                    //指定请求的数据格式为json
+                    contentType: "application/json",
+                    // 数据
+                    data: msg,
+                    //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
+                    dataType: "json",
+                    success: function (res) {
+                        console.log(res);
+                        rs = res;
+                        if (rs.status != 200) {
+                            alert(rs.data[0].info);
+                        } else if (rs.status == 200) {
+                            alert(rs.data[0].info);
                             location.href = "https://www.baidu.com/";
                         }
+
                     },
                     error: function () {
                         console.log("请求出错！");
@@ -142,6 +239,51 @@
 
         });
     </script>
+
 </body>
+<script>
+    $("#btnyzm").click(function () {
+        alert('1');
+        // var dic = {
+        //     passwd: $("#passwd").val(),
+        //     unpasswd: $("#unpasswd").val(),
+        //     qq: $("#qq").val(),
+        //     phone: $("#phone").val(),
+        //     check_code: $("#check_code").val()
+        // };
+        // console.log(dic);
+        // 将获取的字符串转换为 json数据
+        // var msg = JSON.stringify(dic);
+        // var $test = $(".test");
+        // ajax发送
+        // $.ajax({
+        //     // 发送到的地址
+        //     url: "./IndexViews/SendCode/",
+        //     //请求方式
+        //     type: "post",
+        //     //指定请求的数据格式为json
+        //     contentType: "application/json",
+        //     // 数据
+        //     data: msg,
+        //     //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
+        //     dataType: "json",
+        //     success: function (res) {
+        //         console.log(res);
+        //         rs = res;
+        //         if (rs.status != 200) {
+        //             alert(rs.data[0].info);
+        //         } else if (rs.status == 200) {
+        //             alert(rs.data[0].info);
+        //             // location.href = "https://www.baidu.com/";
+        //         }
+
+        //     },
+        //     error: function () {
+        //         console.log("请求出错！");
+        //     }
+        // });
+
+    }
+</script>
 
 </html>
