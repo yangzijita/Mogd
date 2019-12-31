@@ -26,10 +26,10 @@
     <div id="wrapper" class="login-page">
       <div id="login_form" class="form">
         <form class="login-form">
-          <input type="text" placeholder="手机号" id="phone" />
+          <input type="text" placeholder="手机号" onchange="checkPhone()" maxlength="11" id="phone" />
           <input type="password" autocomplete="new-password" placeholder="密码" id="passwd" />
           <div class="dlu">
-            <input type="text" id="check_code" placeholder="验证码" />
+            <input type="text" id="check_code" maxlength="4" placeholder="验证码" />
             <img type="image" id="dl-yzmimg" src="./IndexViews/CheckCode/" />
           </div>
           <input id="login" type="button" value="登　录"></input>
@@ -49,6 +49,19 @@
     }
   </script>
 
+  <script>
+    function checkPhone() {
+      var phone = document.getElementById('phone').value;
+      var btn = $("#login");
+      if (!(/^1[3456789]\d{9}$/.test(phone))) {
+        // 需要先禁用按钮（为防止用户重复点击）
+        btn.unbind('click');
+        btn.attr('disabled', 'disabled');
+        alert("手机号码有误，请重填");
+        return false;
+      }
+    }
+  </script>
   <script>
     $("#login").click(function () {
       var dic = {
@@ -85,7 +98,7 @@
             data = res;
             if (data.status == "200") {
               alert(data.data[0].info);
-              location.href = "https://www.baidu.com/";
+              location.href = "./admin/index.html";
             } else if (data.status == "400") {
               alert(data.data[0].info);
             }
