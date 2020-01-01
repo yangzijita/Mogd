@@ -37,12 +37,13 @@
                         手机：  r_phone
                         验证码   r_verification
                        手机验证码         r_phoneyzm
+                       onchange="checkPhone()
                -->
-                    <input type="text" id="phone" maxlength="11" onchange="checkPhone()" placeholder="请输入手机号" />
+                    <input type="text" id="phone" maxlength="11" " placeholder=" 请输入手机号" />
                     <!-- <input type="text" placeholder="用户名" id="r_user_name" /> -->
                     <input type="password" autocomplete="new-password" placeholder="密码" id="passwd" />
                     <input type="password" autocomplete="new-password" placeholder="重复密码" id="unpasswd" />
-                    <input type="text" onchange="checkQq()" placeholder="QQ" id="qq" />
+                    <input type="text" placeholder="QQ" id="qq" />
 
                     <div class="yzm-div">
                         <input type="text" maxlength="4" id="check_code" placeholder="请输入验证码" />
@@ -73,31 +74,74 @@
         }
     </script>
     <script>
-        function checkPhone() {
-            var phone = document.getElementById('phone').value;
-            var btn = $("#btnyzm");
-            if (!(/^1[3456789]\d{9}$/.test(phone))) {
-                // 需要先禁用按钮（为防止用户重复点击）
-                btn.unbind('click');
-                btn.attr('disabled', 'disabled');
-                alert("手机号码有误，请重填");
-                return false;
-            }
-        }
+        // function checkPhone() {
+        //     var phone = document.getElementById('phone').value;
+        //     var btn = $("#btnyzm");
+        //     if (!(/^1[3456789]\d{9}$/.test(phone))) {
+        //         // 需要先禁用按钮（为防止用户重复点击）
+        //         // btn.unbind('click');
+        //         // btn.attr('disabled', 'disabled');
+        //         alert("手机号码有误，请重填");
+        //         return false;
+        //     }
+            // var that = $(this)
+            // 需要先禁用按钮（为防止用户重复点击）
+            // btn.unbind('click');
+            // btn.attr('disabled', 'disabled');
+            // var timeo = 60;
+            // var timeStop = setInterval(function () {
+            //     timeo--;
+            //     if (timeo > 0) {
+            //         btn.text('重新发送' + timeo + 's');
+            //         btn.attr('disabled', 'disabled');//禁止点击
+            //     } else {
+            //         btn = 60;//当减到0时赋值为60
+            //         btn.text('获取验证码');
+            //         clearInterval(timeStop);//清除定时器
+            //         btn.removeAttr('disabled');//移除属性，可点击
+            //     }
+            // }, 1000)
+        // }
 
-        function checkQq() {
-            var qq = document.getElementById('qq').value;
-            var btn = $("#create");
-            if (!(/^\d+(\.\d+)?$/.test(qq))) {
-                // 需要先禁用按钮（为防止用户重复点击）
-                btn.unbind('click');
-                btn.attr('disabled', 'disabled');
-                alert("QQ有误，请重填");
-                return false;
+        // function checkPhone_cd() {
 
-            }
-        }
+        //     var btn = $("#btnyzm");
+
+        // }
+        // var btn = $("#btnyzm");
+        // var countdown = 60;
+        // function settime() {
+        //     if (countdown == 0) {
+        //         btn.removeAttribute("disabled");
+        //         btn.value = "获取验证码";
+        //         countdown = 60;
+        //         return false;
+        //     } else {
+        //         btn.setAttribute("disabled", true);
+        //         btn.value = "重新发送(" + countdown + ")";
+        //         countdown--;
+        //     }
+        //     setTimeout(function () {
+        //         settime(btn);
+        //     }, 1000);
+        // }
+
+
+
+
+        // function checkQq() {
+        //     var qq = document.getElementById('qq').value;
+        //     var btn = $("#create");
+        //     if (!(/^\d+(\.\d+)?$/.test(qq))) {
+        //         // 需要先禁用按钮（为防止用户重复点击）
+        //         btn.unbind('click');
+        //         btn.attr('disabled', 'disabled');
+        //         alert("QQ有误，请重填");
+        //         return false;
+        //     }
+        // }
     </script>
+    <!-- 手机验证码 -->
     <script>
         $("#create").click(function () {
             var dic = {
@@ -167,13 +211,30 @@
     </script>
 
 </body>
+<!-- 手机验证码提交 -->
+<!-- <script>
+    $('#btnyzm').on('click', function () {
+        var that = $(this)
+        var timeo = 60;
+        var timeStop = setInterval(function () {
+            timeo--;
+            if (timeo > 0) {
+                that.text('重新发送' + timeo + 's');
+                that.attr('disabled', 'disabled');//禁止点击
+            } else {
+                timeo = 60;//当减到0时赋值为60
+                that.text('获取验证码');
+                clearInterval(timeStop);//清除定时器
+                that.removeAttr('disabled');//移除属性，可点击
+            }
+        }, 1000)
+    })
+</script> -->
+
+
 <script>
     $("#btnyzm").click(function () {
         var btn = $("#btnyzm");
-        // 需要先禁用按钮（为防止用户重复点击）
-        btn.unbind('click');
-        btn.attr('disabled', 'disabled');
-        // alert('1');
         var dic = {
             passwd: $("#passwd").val(),
             unpasswd: $("#unpasswd").val(),
@@ -181,8 +242,56 @@
             phone: $("#phone").val(),
             check_code: $("#check_code").val()
         };
-        console.log(dic);
-        // 将获取的字符串转换为 json数据
+        // var phone = document.getElementById('phone').value;
+        //     // var btn = $("#btnyzm");
+        //     if (!(/^1[3456789]\d{9}$/.test(phone))) {
+        //         // 需要先禁用按钮（为防止用户重复点击）
+        //         // btn.unbind('click');
+        //         // btn.attr('disabled', 'disabled');
+        //         alert("手机号码有误，请重填");
+        //         return false;
+        //     }
+        if (!(/^1[3456789]\d{9}$/.test(dic.phone))) {
+            // 需要先禁用按钮（为防止用户重复点击）
+            // btn.unbind('click');
+            // btn.attr('disabled', 'disabled');
+            alert("手机号码有误，请重填");
+            return false;
+        } else if (!(/^1[3456789]\d{9}$/.test(dic.phone))) {
+            // 需要先禁用按钮（为防止用户重复点击）
+            // btn.unbind('click');
+            // btn.attr('disabled', 'disabled');
+            alert("手机号码有误，请重填");
+            return false;
+        } else if (!(/^\d+(\.\d+)?$/.test(dic.qq))) {
+            // 需要先禁用按钮（为防止用户重复点击）
+            btn.unbind('click');
+            btn.attr('disabled', 'disabled');
+            alert("QQ有误，请重填");
+            return false;
+        } else if (dic.passwd != dic.unpasswd) {
+            alert('2次密码不一样');
+
+        } else {
+            var timeo = 60;
+            var timeStop = setInterval(function () {
+                // alert('111');
+                timeo--;
+                if (timeo > 0) {
+                    btn.val('重新发送' + timeo + 's');
+                    // btn.text("111111111");
+                    btn.attr('disabled', 'disabled');//禁止点击
+                } else {
+                    btn = 60;//当减到0时赋值为60
+                    btn.val('获取验证码');
+                    clearInterval(timeStop);//清除定时器
+                    btn.removeAttr('disabled');//移除属性，可点击
+                }
+            }, 1000)
+
+
+        }
+
         var msg = JSON.stringify(dic);
         // var $test = $(".test");
         // ajax发送
@@ -198,19 +307,19 @@
             //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
             dataType: "json",
             success: function (res) {
-                console.log(res);
+                // console.log(res);
                 rs = res;
                 if (rs.status != 200) {
                     alert(rs.data[0].info);
                 } else if (rs.status == 200) {
                     alert(rs.data[0].info);
-                    // location.href = "https://www.baidu.com/";
                 }
             },
             error: function () {
                 console.log("请求出错！");
             }
         });
+
     });
 </script>
 

@@ -41,12 +41,14 @@
   cursor: pointer;
 }
 
-#create,
-#phonebtn:hover,
-#create,
-#phonebtn:active,
-#create,
-#phonebtn:focus {
+#create:hover,
+#create:active,
+#create:focus {
+  background: #43a047;
+}
+#btnyzm:hover,
+#btnyzm:active,
+#btnyzm:focus {
   background: #43a047;
 }
 
