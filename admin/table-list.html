@@ -12,13 +12,28 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" type="image/png" href="assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
-    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <meta name="apple-mobile-web-app-title" content="蘑菇丁打卡" />
     <script src="assets/js/echarts.min.js"></script>
     <link rel="stylesheet" href="assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="assets/css/app.css">
     <script src="assets/js/jquery.min.js"></script>
-
+    <script>
+        $(function () {
+            $.ajax({
+                url: "/../IndexViews/User/",//ajax请求要发送的地址
+                dataType: "json",//响应数据的类型
+                type: "POST",//发送请求的方式
+                success: function (data) {
+                    //data为服务器端响应的数据
+                    rs = data;
+                    if (rs.status == "400") {
+                        window.location.href = "../login.html";
+                    }
+                }
+            });
+        })
+    </script>
 </head>
 
 <body data-type="widgets">
@@ -36,7 +51,7 @@
                 <div class="am-fl tpl-header-switch-button am-icon-list">
                     <span>
 
-                </span>
+                    </span>
                 </div>
                 <!-- 搜索 -->
                 <div class="am-fl tpl-header-search">
@@ -50,7 +65,7 @@
                     <ul>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
-                            <a href="javascript:;">欢迎你, <span>Amaze UI</span> </a>
+                            <a href="javascript:;">欢迎你, <span>admin</span> </a>
                         </li>
 
                         <!-- 新邮件 -->
@@ -59,8 +74,8 @@
                                 <i class="am-icon-envelope"></i>
                                 <span class="am-badge am-badge-success am-round item-feed-badge">4</span>
                             </a> -->
-                            <!-- 弹出列表 -->
-                            <!-- <ul class="am-dropdown-content tpl-dropdown-content">
+                        <!-- 弹出列表 -->
+                        <!-- <ul class="am-dropdown-content tpl-dropdown-content">
                                 <li class="tpl-dropdown-menu-messages">
                                     <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
                                         <div class="menu-messages-ico">
@@ -113,8 +128,8 @@
                                 <span class="am-badge am-badge-warning am-round item-feed-badge">5</span>
                             </a> -->
 
-                            <!-- 弹出列表 -->
-                            <!-- <ul class="am-dropdown-content tpl-dropdown-content">
+                        <!-- 弹出列表 -->
+                        <!-- <ul class="am-dropdown-content tpl-dropdown-content">
                                 <li class="tpl-dropdown-menu-notifications">
                                     <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
                                         <div class="tpl-dropdown-menu-notifications-title">
@@ -192,10 +207,11 @@
                         <img src="assets/img/user04.png" alt="">
                     </div>
                     <span class="user-panel-logged-in-text">
-              <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-              禁言小张
-          </span>
-                    <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
+                        <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+                        禁言小张
+                    </span>
+                    <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span>
+                        账号设置</a>
                 </div>
             </div>
 
@@ -209,7 +225,7 @@
                 </li>
                 <li class="sidebar-nav-link">
                     <a href="tables.html">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 表格
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 任务
                     </a>
                 </li>
                 <!-- <li class="sidebar-nav-link">
@@ -278,7 +294,7 @@
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title  am-cf">文章列表</div>
+                                <div class="widget-title  am-cf">任务列表</div>
 
 
                             </div>
@@ -288,10 +304,15 @@
                                     <div class="am-form-group">
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
-                                                <button type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</button>
-                                                <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
-                                                <button type="button" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-archive"></span> 审核</button>
-                                                <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                                                <button type="button" class="am-btn am-btn-default am-btn-success"><span
+                                                        class="am-icon-plus"></span> 新增</button>
+                                                <button type="button"
+                                                    class="am-btn am-btn-default am-btn-secondary"><span
+                                                        class="am-icon-save"></span> 保存</button>
+                                                <button type="button" class="am-btn am-btn-default am-btn-warning"><span
+                                                        class="am-icon-archive"></span> 审核</button>
+                                                <button type="button" class="am-btn am-btn-default am-btn-danger"><span
+                                                        class="am-icon-trash-o"></span> 删除</button>
                                             </div>
                                         </div>
                                     </div>
@@ -299,41 +320,86 @@
                                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
                                     <div class="am-form-group tpl-table-list-select">
                                         <select data-am-selected="{btnSize: 'sm'}">
-              <option value="option1">所有类别</option>
-              <option value="option2">IT业界</option>
-              <option value="option3">数码产品</option>
-              <option value="option3">笔记本电脑</option>
-              <option value="option3">平板电脑</option>
-              <option value="option3">只能手机</option>
-              <option value="option3">超极本</option>
-            </select>
+                                            <option value="option1">所有类别</option>
+                                            <option value="option2">IT业界</option>
+                                            <option value="option3">数码产品</option>
+                                            <option value="option3">笔记本电脑</option>
+                                            <option value="option3">平板电脑</option>
+                                            <option value="option3">只能手机</option>
+                                            <option value="option3">超极本</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
                                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
                                         <input type="text" class="am-form-field ">
                                         <span class="am-input-group-btn">
-            <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button"></button>
-          </span>
+                                            <button
+                                                class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
+                                                type="button"></button>
+                                        </span>
                                     </div>
                                 </div>
 
                                 <div class="am-u-sm-12">
-                                    <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
+                                    <table width="100%"
+                                        class="am-table am-table-compact am-table-striped tpl-table-black "
+                                        id="example-r">
                                         <thead>
                                             <tr>
-                                                <th>文章标题</th>
-                                                <th>作者</th>
-                                                <th>时间</th>
-                                                <th>操作</th>
+                                                <th>mobile</th>
+                                                <th>蘑菇钉密码</th>
+                                                <th>打卡发布的信息</th>
+                                                <th>打卡地点</th>
+                                                <th>打卡类型</th>
+                                                <th>添加时间</th>
+                                                <th>到期时间</th>
+                                                <th>打卡时间</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr class="gradeX">
-                                                <td>Amaze UI 模式窗口</td>
-                                                <td>张鹏飞</td>
-                                                <td>2016-09-26</td>
-                                                <td>
+                                        <tbody id="tab">
+
+                                            <script>
+                                                $(function () {
+                                                    $.ajax({
+                                                        url: "/../IndexViews/GetWork/",//ajax请求要发送的地址
+                                                        dataType: "json",//响应数据的类型
+                                                        type: "POST",//发送请求的方式
+                                                        success: function (data) {
+                                                            //data为服务器端响应的数据
+                                                            var rs = data;
+                                                            if (rs.ststus == 400) {
+                                                                // window.location.href = "../login.html";
+                                                                alert("rs.data['info']");
+                                                            } else if (rs.ststus == 200) {
+                                                                var msg = "";
+                                                                var res = rs.data;
+                                                                // console.log(res)
+                                                                for (var i = 1; i <= res.length; i++) {
+                                                                    // console.log(res[i].mobile);
+                                                                    msg += "<tr class=\"gradeX\">";
+                                                                    msg += "<td>" + res[i - 1].mobile + "</td>";
+                                                                    msg += "<td>" + res[i - 1].蘑菇钉密码 + "</td>";
+                                                                    msg += "<td>" + res[i - 1].打卡发布的信息 + "</td>";
+                                                                    msg += "<td>" + res[i - 1].打卡地点 + "</td>";
+                                                                    msg += "<td>" + res[i - 1].打卡类型 + "</td>";
+                                                                    msg += "<td>" + res[i - 1].添加时间 + "</td>";
+                                                                    msg += "<td>" + res[i - 1].到期时间 + "</td>";
+                                                                    msg += "<td>" + res[i - 1].打卡时间 + "</td>";
+
+                                                                    msg += "</tr>";
+
+                                                                }
+                                                                $("#tab").html(msg);
+
+                                                            }
+                                                        }
+                                                    });
+                                                })
+                                            //         < tr class="gradeX" id = "miss" >
+                                            // </tr >
+                                            </script>
+                                            <!-- <td>
                                                     <div class="tpl-table-black-operation">
                                                         <a href="javascript:;">
                                                             <i class="am-icon-pencil"></i> 编辑
@@ -342,7 +408,7 @@
                                                             <i class="am-icon-trash"></i> 删除
                                                         </a>
                                                     </div>
-                                                </td>
+                                                </td> 
                                             </tr>
                                             <tr class="even gradeC">
                                                 <td>有适配微信小程序的计划吗</td>
@@ -419,8 +485,8 @@
                                                         </a>
                                                     </div>
                                                 </td>
-                                            </tr>
-                                            <!-- more data -->
+                                            </tr> -->
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -450,6 +516,36 @@
     <script src="assets/js/amazeui.datatables.min.js"></script>
     <script src="assets/js/dataTables.responsive.min.js"></script>
     <script src="assets/js/app.js"></script>
+    <!-- <script>
+        $(function () {
+            $.ajax({
+                url: './../IndexViews/GetWork/',
+                type: 'post',
+                dataTypt: 'json',
+                // timeout: '1000',
+                cache: 'false',
+                error: erryFunction,
+                success: succFunction
+            })
+            function erryFunction() {
+                alert("请求错误");
+            }
+            function succFunction(tt) {
+                var jsData = tt;
+                if (jsData.status == "200") {
+                    var data = jsData.data['userinfo_list'];
+                    console.log('data');
+                } else {
+                    alert('报错');
+                }
+            }
+        });
+    </script> -->
+    <script>
+
+
+
+    </script>
 
 </body>
 

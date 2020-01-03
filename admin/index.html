@@ -12,13 +12,32 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" type="image/png" href="assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
-    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <meta name="apple-mobile-web-app-title" content="蘑菇丁打卡" />
     <script src="assets/js/echarts.min.js"></script>
     <link rel="stylesheet" href="assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="assets/css/app.css">
     <script src="assets/js/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: "/../IndexViews/User/",//ajax请求要发送的地址
+                dataType: "json",//响应数据的类型
+                type: "POST",//发送请求的方式
+                success: function (data) {
+                    //data为服务器端响应的数据
+                    rs = data;
+                    if (rs.status == "400") {
+                        window.location.href = "../login.html";
+                    } else if (rs.status == "200") {
+                        // alert('ok');
+                    }
+                }
+            });
+        })
 
+
+    </script>
 </head>
 
 <body data-type="index">
@@ -107,7 +126,7 @@
                 </li>
                 <li class="sidebar-nav-link">
                     <a href="table-list.html">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 表格
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 任务
                     </a>
                 </li>
                 <!-- <li class="sidebar-nav-link">
