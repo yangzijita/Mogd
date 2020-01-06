@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="assets/css/app.css">
     <script src="assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         $(function () {
             $.ajax({
@@ -43,10 +46,10 @@
                     rs = data;
                     if (rs.status == "400") {
                         // window.location.href = "../login.html";
-                        console.log('当前未登录');
+                        // console.log('当前未登录');
                     } else if (rs.status == "200") {
                         // alert('ok');
-                        console.log(rs);
+                        // console.log(rs);
                         // console.log(rs.data.QQimg);
                         $("#imgqq").attr('src', rs.data.QQimg);
                         $("#idname").text(rs.data.phone);
@@ -56,7 +59,14 @@
                 }
             });
         })
-
+        // $(function () {
+        //     $('#myModalLabel').on('hide.bs.modal', function () {
+        //         // 关闭时清空edit状态为add
+        //         $("#act").val("add");
+        //         location.reload();
+        //     })
+        // });
+        // $('#myModalLabel').modal(options)
     </script>
 </head>
 
@@ -199,7 +209,7 @@
 
                         <!-- 退出 -->
                         <li class="am-text-sm">
-                            <a href="javascript:;">
+                            <a href="/../IndexViews/LoginOut/">
                                 <span class="am-icon-sign-out"></span> 退出
                             </a>
                         </li>
@@ -328,19 +338,192 @@
                                     <div class="am-form-group">
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
-                                                <button type="button" class="am-btn am-btn-default am-btn-success"><span
-                                                        class="am-icon-plus"></span> 新增</button>
                                                 <button type="button"
+                                                    class="btn btn-primary btn-sm am-btn am-btn-default am-btn-success"
+                                                    data-toggle="modal" data-target="#myModal"><span
+                                                        class="am-icon-plus"></span> 新增</button>
+                                                <!-- <button type="button"
                                                     class="am-btn am-btn-default am-btn-secondary"><span
-                                                        class="am-icon-save"></span> 保存</button>
+                                                        class="am-icon-save"></span> 保存</button> -->
                                                 <button type="button" class="am-btn am-btn-default am-btn-warning"><span
                                                         class="am-icon-archive"></span> 审核</button>
-                                                <button type="button" class="am-btn am-btn-default am-btn-danger"><span
-                                                        class="am-icon-trash-o"></span> 删除</button>
+                                                <!-- <button type="button" class="am-btn am-btn-default am-btn-danger"><span
+                                                        class="am-icon-trash-o"></span> 删除</button> -->
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">
+                                                    &times;
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    用户信息
+                                                </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="form-horizontal" role="form">
+                                                    <div class="form-group">
+                                                        <!-- <label for="user_id" class="col-sm-3 control-label">
+                                                            <p>用户ID</p>
+                                                        </label> -->
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" id="mgdphone"
+                                                                name="mgdphone" value="" placeholder="mobile">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <!-- <label for="lastname" class="col-sm-3 control-label">用户名</label> -->
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" name="user_name"
+                                                                value="" id="passwd" placeholder="蘑菇钉密码">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- <label for="lastname" class="col-sm-3 control-label">地址</label> -->
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" name="address"
+                                                                value="" id="uinfo" placeholder="打卡发布的信息">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" name="address"
+                                                                value="" id="address" placeholder="打卡地点">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
+                                                        <label for=""
+                                                            class="col-sm-3 control-label text-info">打卡类型</label>
+                                                        <div class="col-sm-9">
+                                                            <!-- <input type="text" class="form-control" name="address"
+                                                                value="" id="type" placeholder="打卡类型（START，END）"> -->
+                                                            <select id="you_type" class="form-control">
+
+                                                                <option value="START">START</option>
+                                                                <option value="END">END</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" name="address"
+                                                                value="" id="hour" maxlength="2"
+                                                                placeholder="设置打卡时间（单位：整点；如8点）">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" name="address"
+                                                                value="" id="minute" maxlength="2"
+                                                                placeholder="设置打卡时间（单位：分；如 30分）">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" name="address"
+                                                                value="" id="week_start" maxlength="2"
+                                                                placeholder="打卡的开始时间">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" name="address"
+                                                                value="" id="week_end" maxlength="2"
+                                                                placeholder="设置打卡的结束时间">
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                                </button>
+                                                <button type="submit" id="adduced" class="btn btn-primary">
+                                                    提交
+                                                </button><span id="tip"> </span>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.modal -->
+                                </div>
+                                <script>
+                                    $("#adduced").click(function () {
+                                        var dic = {
+                                            mgdphone: $("#mgdphone").val(),
+                                            passwd: $("#passwd").val(),
+                                            address: $("#address").val(),
+                                            type: $("#you_type option:selected").val(),
+                                            uinfo: $("#uinfo").val(),
+                                            hour: $("#hour").val(),
+                                            minute: $("#minute").val(),
+                                            week_start: $("#week_start").val(),
+                                            week_end: $("#week_end").val(),
+                                        };
+                                        // console.log(dic);
+                                        if (dic.mgdphone == null || dic.mgdphone == "") {
+                                            alert("mobile 不能为空");
+                                        } else if (dic.passwd == null || dic.passwd == "") {
+                                            alert("密码不能为空");
+                                        } else if (dic.address == null || dic.address == "") {
+                                            alert("mima1 null");
+                                        } else {
+                                            // console.log(dic);
+                                            // 将获取的字符串转换为 json数据
+                                            var msg = JSON.stringify(dic);
+                                            // var $test = $(".test");
+                                            // ajax发送
+
+                                            $.ajax({
+                                                // 发送到的地址
+                                                url: "/../IndexViews/NewCrontab/",
+                                                //请求方式
+                                                type: "post",
+                                                //指定请求的数据格式为json
+                                                contentType: "application/json",
+                                                // 数据
+                                                data: msg,
+                                                //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
+                                                dataType: "json",
+                                                success: function (res) {
+                                                    console.log(res);
+                                                    var data = res;
+                                                    if (data.status == 200) {
+                                                        console.log(res);
+                                                        alert(data.data[0].info);
+                                                        // location.href = "./admin/index.html";
+                                                    } else if (data.ststus == 400) {
+                                                        // console.log(res);
+                                                        alert(data.data[0].info);
+                                                    } else {
+                                                        alert("111");
+                                                    }
+                                                },
+                                                error: function () {
+                                                    console.log("请求出错！");
+                                                }
+                                            });
+                                        }
+                                    });
+
+
+                                </script>
                                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
                                     <div class="am-form-group tpl-table-list-select">
                                         <select data-am-selected="{btnSize: 'sm'}">
@@ -386,7 +569,7 @@
                                             <script>
                                                 $(function () {
                                                     $.ajax({
-                                                        url: "/../IndexViews/GetWork/",//ajax请求要发送的地址
+                                                        url: "/../IndexViews/GetCrontab/",//ajax请求要发送的地址
                                                         dataType: "json",//响应数据的类型
                                                         type: "POST",//发送请求的方式
                                                         success: function (data) {
@@ -394,7 +577,7 @@
                                                             var rs = data;
                                                             if (rs.ststus == 400) {
                                                                 // window.location.href = "../login.html";
-                                                                alert("rs.data['info']");
+                                                                alert(rs.data['info']);
                                                             } else if (rs.ststus == 200) {
                                                                 var msg = "";
                                                                 var res = rs.data;
