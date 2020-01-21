@@ -212,9 +212,8 @@
                         <div class="col-sm-2"></div>
                         <div class="col-sm-4">
                             <input type="button" class="main1" id="form-submit" value="购 买" />
-                            <div class="qrcode">
-                                <img class="image" width="100%" height="100%" onerror="this.src='../images/mr.png'"
-                                    src="" alt="点击购买扫描二维码" />
+                            <div class="qrcode" style="display: none;">
+                                <img class="image" width="100%" height="100%" src="test" alt="点击购买扫描二维码" />
                             </div>
                         </div>
                     </div>
@@ -266,16 +265,19 @@
                                 //     $("#form-submit").html(msg);
                                 // })
 
-
-                                $(function () {
-                                    $(".main1").click(function () {
-                                        // alert(1111);
-                                        $("#qrcode").fadeIn("slow");
-                                    });
-                                    $("#qrcode").click(function () {
-                                        $("#qrcode").fadeOut("slow");
-                                    })
+                                $(".main1").click(function () {
+                                    $(".qrcode").show();
                                 });
+
+                                // $(function () {
+                                //     $(".main1").click(function () {
+                                //         // alert(1111);
+                                //         $("#qrcode").fadeIn("slow");
+                                //     });
+                                //     $("#qrcode").click(function () {
+                                //         $("#qrcode").fadeOut("slow");
+                                //     })
+                                // });
 
                                 $(".image").attr('src', urlimg);
 
