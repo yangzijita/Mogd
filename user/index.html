@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="assets/css/app.css">
     <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/sweetalert.css">
+    <script src="../js/sweetalert-dev.js"></script>
+
+
     <script>
         $(function () {
             $.ajax({
@@ -207,12 +211,19 @@
                     <div class="form-group">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-4">
-                            <input type="button" id="form-submit" value="购 买" />
+                            <input type="button" class="main1" id="form-submit" value="购 买" />
+                            <div class="qrcode">
+                                <img class="image" width="100%" height="100%" onerror="this.src='../images/mr.png'"
+                                    src="" alt="点击购买扫描二维码" />
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
             <script>
+                // $(".image").error(function () {
+                //     $(".image").replaceWith("<p><b>二维码未加载！</b></p>");
+                // });
                 $("#form-submit").click(function () {
                     var dic = {
                         price: $("#pName option:selected").val(),
@@ -241,13 +252,39 @@
                             console.log(res);
                             var data = res;
                             if (data.status == 200) {
+
                                 console.log(res);
-                                // alert(data.data[0].info);
-                                location.href = data.data[0].url;
+                                // alert();
+                                let urlimg = data.data[0].url;
+                                //     console.log(urlimg);
+                                // alert(<img src='urlimg' alt=''>);
+                                // $("#form-submit").click(function () {
+                                //     // alert(111);
+                                //     msg += "<div>"
+                                //         + "<img src=\"urlimg\" >"
+                                //     msg += "</div>";
+                                //     $("#form-submit").html(msg);
+                                // })
+
+
+                                $(function () {
+                                    $(".main1").click(function () {
+                                        // alert(1111);
+                                        $("#qrcode").fadeIn("slow");
+                                    });
+                                    $("#qrcode").click(function () {
+                                        $("#qrcode").fadeOut("slow");
+                                    })
+                                });
+
+                                $(".image").attr('src', urlimg);
+
+
                             } else if (data.status == 400) {
                                 // console.log(res);
                                 alert('aaaa');
                                 // location.href = "./table-list.html";
+
                             } else {
                                 // alert("111");
                             }
@@ -275,7 +312,7 @@
     <script src="assets/js/dataTables.responsive.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script>
-        // /IndexViews/Logout/
+                // /IndexViews/Logout/
         // function doLogout() {
             // var data = {};
             //配置的登出的url，
