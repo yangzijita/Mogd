@@ -98,7 +98,7 @@
             data = res;
             if (data.status == "200") {
               alert(data.data[0].info);
-              location.href = "./admin/index.html";
+              location.href = "./user/index.html";
             } else if (data.status == "400") {
               alert(data.data[0].info);
             }
