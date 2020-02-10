@@ -112,7 +112,6 @@
                         <li class="am-text-sm tpl-header-navbar-welcome">
                             <a href="javascript:;">欢迎你, <span id="idname">admin</span> </a>
                         </li>
-
                         <!-- 新邮件 -->
                         <!-- <li class="am-dropdown tpl-dropdown" data-am-dropdown>
                             <a href="javascript:;" class="am-dropdown-toggle tpl-dropdown-toggle" data-am-dropdown-toggle>
@@ -227,7 +226,6 @@
                     </ul>
                 </div>
             </div>
-
         </header>
         <!-- 风格切换 -->
         <div class="tpl-skiner">
@@ -259,7 +257,6 @@
                         账号设置</a>
                 </div>
             </div>
-
             <!-- 菜单 -->
             <ul class="sidebar-nav">
                 <!-- <li class="sidebar-nav-heading">Components <span class="sidebar-nav-heading-info"> 附加组件</span></li> -->
@@ -273,65 +270,8 @@
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 任务
                     </a>
                 </li>
-                <!-- <li class="sidebar-nav-link">
-                    <a href="calendar.html">
-                        <i class="am-icon-calendar sidebar-nav-link-logo"></i> 日历
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="form.html">
-                        <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 表单
-
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="chart.html">
-                        <i class="am-icon-bar-chart sidebar-nav-link-logo"></i> 图表
-
-                    </a>
-                </li> -->
-
-                <!-- <li class="sidebar-nav-heading">Page<span class="sidebar-nav-heading-info"> 常用页面</span></li>
-                <li class="sidebar-nav-link">
-                    <a href="javascript:;" class="sidebar-nav-sub-title active">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
-                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico sidebar-nav-sub-ico-rotate"></span>
-                    </a>
-                    <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
-                        <li class="sidebar-nav-link">
-                            <a href="table-list.html" class="sub-active">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文字列表
-                            </a>
-                        </li>
-
-                        <li class="sidebar-nav-link">
-                            <a href="table-list-img.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 图文列表
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="sign-up.html">
-                        <i class="am-icon-clone sidebar-nav-link-logo"></i> 注册
-                        <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="login.html">
-                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
-                    </a>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="404.html">
-                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 404错误
-                    </a>
-                </li> -->
-
             </ul>
         </div>
-
-
         <!-- 内容区域 -->
         <div class="tpl-content-wrapper">
             <div class="row-content am-cf">
@@ -353,15 +293,7 @@
                                                     class="btn btn-primary btn-sm am-btn am-btn-default am-btn-success"
                                                     data-toggle="modal" data-target="#myModal"><span
                                                         class="am-icon-plus"></span> 新增</button>
-                                                <!-- <button type="button"
-                                                    class="am-btn am-btn-default am-btn-secondary"><span
-                                                        class="am-icon-save"></span> 保存</button> -->
-                                                <!-- <button type="button" class="am-btn am-btn-default am-btn-warning"><span
-                                                        class="am-icon-archive"></span>修改</button> -->
-                                                <!-- <button type="button" class="am-btn am-btn-default am-btn-danger"><span
-                                                        class="am-icon-trash-o"></span> 删除</button> -->
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -420,7 +352,6 @@
                                                             <!-- <input type="text" class="form-control" name="address"
                                                                 value="" id="type" placeholder="打卡类型（START，END）"> -->
                                                             <select id="you_type" class="form-control">
-
                                                                 <option value="START">START</option>
                                                                 <option value="END">END</option>
                                                             </select>
@@ -473,6 +404,7 @@
                                         </div>
                                     </div><!-- /.modal -->
                                 </div>
+                                <!-- 新增 -->
                                 <script>
                                     $("#adduced").click(function () {
                                         var dic = {
@@ -518,6 +450,7 @@
                                                         console.log(res);
                                                         alert(data.data[0].info);
                                                         // location.href = "./admin/index.html";
+                                                        location.href = "./table-list.html";
                                                     } else if (data.status == 400) {
                                                         // console.log(res);
                                                         alert(data.data[0].info);
@@ -535,29 +468,7 @@
 
 
                                 </script>
-                                <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-                                    <div class="am-form-group tpl-table-list-select">
-                                        <select data-am-selected="{btnSize: 'sm'}">
-                                            <option value="option1">所有类别</option>
-                                            <option value="option2">IT业界</option>
-                                            <option value="option3">数码产品</option>
-                                            <option value="option3">笔记本电脑</option>
-                                            <option value="option3">平板电脑</option>
-                                            <option value="option3">只能手机</option>
-                                            <option value="option3">超极本</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                        <input type="text" class="am-form-field ">
-                                        <span class="am-input-group-btn">
-                                            <button
-                                                class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
-                                                type="button"></button>
-                                        </span>
-                                    </div>
-                                </div>
+
 
                                 <div class="am-u-sm-12">
                                     <table width="100%"
@@ -571,13 +482,11 @@
                                                 <th>打卡地点</th>
                                                 <th>打卡类型</th>
                                                 <th>添加时间</th>
-                                                <th>到期时间</th>
                                                 <th>打卡时间</th>
                                                 <th>操作</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tab">
-
                                             <script>
                                                 $(function () {
                                                     $.ajax({
@@ -593,30 +502,18 @@
                                                             } else if (rs.status == 200) {
                                                                 var msg = "";
                                                                 var res = rs.data;
-                                                                // var cz = "<td>"
-                                                                //     + "<div class=\"tpl-table-black-operation\">"
-                                                                //     + "<a href=\"javascript:;\">"
-                                                                //     + " <i class=\"am-icon-pencil\"></i> 编辑"
-                                                                //     + "</a>"
-                                                                //     + "<a href=\"javascript:;\" class=\"tpl-table-black-operation-del\">"
-                                                                //     + "<i class=\"am-icon-trash\"></i> 删除"
-                                                                //     + "</a>" +
-                                                                //     "</div>";
-                                                                // console.log(res)
                                                                 for (var i = 1; i <= res.length; i++) {
-                                                                    // console.log(res[i].mobile);
                                                                     msg += "<tr class=\"gradeX\">";
-                                                                    msg += "<td>" + res[i - 1].mobile + "</td>";
-                                                                    msg += "<td>" + res[i - 1].蘑菇钉密码 + "</td>";
-                                                                    msg += "<td>" + res[i - 1].打卡发布的信息 + "</td>";
-                                                                    msg += "<td>" + res[i - 1].打卡地点 + "</td>";
-                                                                    msg += "<td>" + res[i - 1].打卡类型 + "</td>";
-                                                                    msg += "<td>" + res[i - 1].添加时间 + "</td>";
-                                                                    msg += "<td>" + res[i - 1].到期时间 + "</td>";
-                                                                    msg += "<td>" + res[i - 1].打卡时间 + "</td>";
+                                                                    msg += "<td id=\"uphne_msg" + i + "\">" + res[i - 1].mobile + "</td>";
+                                                                    msg += "<td id=\"upass_msg" + i + "\">" + res[i - 1].蘑菇钉密码 + "</td>";
+                                                                    msg += "<td id=\"rmsg_msg" + i + "\">" + res[i - 1].打卡发布的信息 + "</td>";
+                                                                    msg += "<td id=\"radd_msg" + i + "\">" + res[i - 1].打卡地点 + "</td>";
+                                                                    msg += "<td id=\"type_msg" + i + "\">" + res[i - 1].打卡类型 + "</td>";
+                                                                    msg += "<td id=\"rtime_msg" + i + "\">" + res[i - 1].添加时间 + "</td>";
+                                                                    msg += "<td id=\"rdtime_msg" + i + "\">" + res[i - 1].打卡时间 + "</td>";
                                                                     msg += "<td>"
-                                                                        + "<div  class=\"tpl-table-black-operation\">"
-                                                                        + "<a id=\"edit\" data-toggle=\"modal\" data-target=\"#myedit\" href=\"javascript:;\">"
+                                                                        + "<div class=\"tpl-table-black-operation\">"
+                                                                        + "<a id=\"edit\" data-toggle=\"modal\" rel=\"external nofollow\" onclick=\"xgfz" + i + "()\" data-target=\"#myedit\" href=\"javascript:;\">"
                                                                         + " <i class=\"am-icon-pencil\"></i> 编辑"
                                                                         + "</a>"
                                                                         + "<a id=\"del\" href=\"javascript:;\" data-toggle=\"modal\" data-target=\"#delcz\" class=\"tpl-table-black-operation-del\">"
@@ -626,6 +523,11 @@
                                                                     msg += "</tr>";
                                                                 }
                                                                 $("#tab").html(msg);
+
+
+                                                                // console.log(l1);
+                                                                // mgdphone
+                                                                // 给修改 赋值
 
                                                             }
                                                         }
@@ -651,73 +553,89 @@
                                                 <div class="modal-body">
                                                     <form class="form-horizontal" role="form">
                                                         <div class="form-group">
-                                                            <div class="col-sm-12">
-                                                                <input type="text" class="form-control" id="mgdphone"
-                                                                    name="mgdphone" value="" placeholder="修改phone">
+                                                            <label for="remark"
+                                                                class="col-sm-3 control-label text-info">修改蘑菇钉账号</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" class="form-control" id="xgmgdphone"
+                                                                    name="mgdphone" value="" placeholder="">
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <div class="col-sm-12">
+                                                            <label for="remark"
+                                                                class="col-sm-3 control-label text-info">修改蘑菇钉密码</label>
+                                                            <div class="col-sm-6">
                                                                 <input type="text" class="form-control" name="user_name"
-                                                                    value="" id="passwd" placeholder="修改蘑菇钉密码">
+                                                                    value="" id="xgpasswd" placeholder="修改蘑菇钉密码">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <div class="col-sm-12">
+                                                            <label for="remark"
+                                                                class="col-sm-3 control-label text-info">打卡发布的信息</label>
+                                                            <div class="col-sm-6">
                                                                 <input type="text" class="form-control" name="address"
-                                                                    value="" id="uinfo" placeholder="打卡发布的信息">
+                                                                    value="" id="xguinfo" placeholder="打卡发布的信息">
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group">
+                                                            <label for="remark"
+                                                                class="col-sm-3 control-label text-info">
+                                                                修改打卡地点
+                                                            </label>
                                                             <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
-                                                            <div class="col-sm-12">
+                                                            <div class="col-sm-6">
                                                                 <input type="text" class="form-control" name="address"
-                                                                    value="" id="address" placeholder="修改打卡地点">
+                                                                    value="" id="xgaddress" placeholder="修改打卡地点">
                                                             </div>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
+                                                        <div class="form-group" style="display: none;">
+                                                            <!-- <label for="remark" class="col-sm-3 control-label">备注</label> 
                                                             <label for=""
-                                                                class="col-sm-3 control-label text-info">修改打卡类型</label>
+                                                                class="col-sm-3 control-label text-info">修改打卡类型</label> -->
                                                             <div class="col-sm-9">
-                                                                <!-- <input type="text" class="form-control" name="address"
-                                                                value="" id="type" placeholder="打卡类型（START，END）"> -->
-                                                                <select id="you_type" class="form-control">
-                                                                    <option value="END">END</option>
-                                                                </select>
+                                                                <input type="text" class="form-control" name="address"
+                                                                    value="" id="xgyou_type" maxlength="10"
+                                                                    placeholder="type">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
-                                                            <div class="col-sm-12">
+                                                            <label for="remark"
+                                                                class="col-sm-6 control-label text-info">设置打卡时间（单位：整点；如8点）</label>
+                                                            <div class="col-sm-6">
                                                                 <input type="text" class="form-control" name="address"
-                                                                    value="" id="hour" maxlength="2"
+                                                                    value="" id="xghour" maxlength="2"
                                                                     placeholder="设置打卡时间（单位：整点；如8点）">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
-                                                            <div class="col-sm-12">
+                                                            <label for="remark"
+                                                                class="col-sm-6 control-label text-info">设置打卡时间（单位：分；如
+                                                                30分）</label>
+                                                            <div class="col-sm-6">
                                                                 <input type="text" class="form-control" name="address"
-                                                                    value="" id="minute" maxlength="2"
+                                                                    value="" id="xgminute" maxlength="2"
                                                                     placeholder="设置打卡时间（单位：分；如 30分）">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for="remark"
+                                                                class="col-sm-3 control-label text-info">打卡的开始时间</label>
                                                             <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
-                                                            <div class="col-sm-12">
+                                                            <div class="col-sm-7">
                                                                 <input type="text" class="form-control" name="address"
-                                                                    value="" id="week_start" maxlength="2"
+                                                                    value="" id="xgweek_start" maxlength="2"
                                                                     placeholder="打卡的开始时间">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
+                                                            <label for="remark"
+                                                                class="col-sm-3 control-label text-info">设置打卡的结束时间</label>
                                                             <!-- <label for="remark" class="col-sm-3 control-label">备注</label> -->
-                                                            <div class="col-sm-12">
+                                                            <div class="col-sm-7">
                                                                 <input type="text" class="form-control" name="address"
-                                                                    value="" id="week_end" maxlength="2"
+                                                                    value="" id="xgweek_end" maxlength="2"
                                                                     placeholder="设置打卡的结束时间">
                                                             </div>
                                                         </div>
@@ -728,76 +646,79 @@
                                                     <button type="button" class="btn btn-default"
                                                         data-dismiss="modal">关闭
                                                     </button>
-                                                    <button type="submit" id="adduced" class="btn btn-primary">
+                                                    <button type="submit" id="upadduced" class="btn btn-primary">
                                                         提交
                                                     </button><span id="tip"> </span>
                                                 </div>
                                             </div>
                                         </div><!-- /.modal -->
                                     </div>
+
+
+
+
+
+                                    <!-- 修改 任务-->
+
                                     <script>
-                                        $("#adduced").click(function () {
+                                        $("#upadduced").click(function () {
+
                                             var dic = {
-                                                mgdphone: $("#mgdphone").val(),
-                                                passwd: $("#passwd").val(),
-                                                address: $("#address").val(),
-                                                type: $("#you_type option:selected").val(),
-                                                uinfo: $("#uinfo").val(),
-                                                hour: $("#hour").val(),
-                                                minute: $("#minute").val(),
-                                                week_start: $("#week_start").val(),
-                                                week_end: $("#week_end").val(),
+                                                mgdphone: $("#xgmgdphone").val(),
+                                                passwd: $("#xgpasswd").val(),
+                                                address: $("#xgaddress").val(),
+                                                uinfo: $("#xguinfo").val(),
+                                                xgtype: $("#xgyou_type").val(),
+                                                hour: $("#xghour").val(),
+                                                minute: $("#xgminute").val(),
+                                                week_start: $("#xgweek_start").val(),
+                                                week_end: $("#xgweek_end").val(),
                                             };
                                             // console.log(dic);
-                                            if (dic.mgdphone == null || dic.mgdphone == "") {
-                                                alert("mobile 不能为空");
-                                            } else if (dic.passwd == null || dic.passwd == "") {
-                                                alert("密码不能为空");
-                                            } else if (dic.address == null || dic.address == "") {
-                                                alert("mima1 null");
-                                            } else {
-                                                // console.log(dic);
-                                                // 将获取的字符串转换为 json数据
-                                                var msg = JSON.stringify(dic);
-                                                // var $test = $(".test");
-                                                // ajax发送
 
-                                                $.ajax({
-                                                    // 发送到的地址
-                                                    url: "/../IndexViews/NewCrontab/",
-                                                    //请求方式
-                                                    type: "post",
-                                                    //指定请求的数据格式为json
-                                                    contentType: "application/json",
-                                                    // 数据
-                                                    data: msg,
-                                                    //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
-                                                    dataType: "json",
-                                                    success: function (res) {
+                                            // console.log(dic);
+                                            // 将获取的字符串转换为 json数据
+                                            var msg = JSON.stringify(dic);
+                                            // var $test = $(".test");
+                                            // ajax发送
+
+                                            $.ajax({
+                                                // 发送到的地址
+                                                url: "/../IndexViews/UpdateCrontab/",
+                                                //请求方式
+                                                type: "post",
+                                                //指定请求的数据格式为json
+                                                contentType: "application/json",
+                                                // 数据
+                                                data: msg,
+                                                //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
+                                                dataType: "json",
+                                                success: function (res) {
+                                                    console.log(res);
+                                                    var data = res;
+                                                    if (data.status == 200) {
                                                         console.log(res);
-                                                        var data = res;
-                                                        if (data.status == 200) {
-                                                            console.log(res);
-                                                            alert(data.data[0].info);
-                                                            // location.href = "./admin/index.html";
-                                                        } else if (data.status == 400) {
-                                                            // console.log(res);
-                                                            alert(data.data[0].info);
-                                                            location.href = "./table-list.html";
-                                                        } else {
-                                                            // alert("111");
-                                                        }
-                                                    },
-                                                    error: function () {
-                                                        console.log("请求出错！");
+                                                        alert(data.data[0].info);
+                                                        // location.href = "./admin/index.html";
+                                                        location.href = "./table-list.html";
+                                                    } else if (data.status == 400) {
+                                                        // console.log(res);
+                                                        alert(data.data[0].info);
+                                                        location.href = "./table-list.html";
+                                                    } else {
+                                                        // alert("111");
                                                     }
-                                                });
-                                            }
+                                                },
+                                                error: function () {
+                                                    console.log("请求出错！");
+                                                }
+                                            });
+
                                         });
 
 
                                     </script>
-                                    <!-- del -->
+                                    <!-- 删除任务-->
                                     <div class="modal fade delclass" id="delcz" tabindex="-1" role="dialog"
                                         aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -811,26 +732,61 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default text-warning"
                                                         data-dismiss="modal">关闭</button>
-                                                    <button type="button"
+                                                    <button type="button" id="del"
                                                         class="btn btn-primary text-warning">确定删除</button>
                                                 </div>
+                                                <script>
+                                                    $("#del").click(function () {
+                                                        var dic = {
+                                                            type: $("#type_msg").text()
+                                                        };
+                                                        // console.log(dic);
+                                                        // console.log(dic);
+                                                        // 将获取的字符串转换为 json数据
+                                                        var msg = JSON.stringify(dic);
+                                                        // var $test = $(".test");
+                                                        // ajax发送
+
+                                                        $.ajax({
+                                                            // 发送到的地址
+                                                            url: "/../IndexViews/DeleteCrontab/",
+                                                            //请求方式
+                                                            type: "post",
+                                                            //指定请求的数据格式为json
+                                                            contentType: "application/json",
+                                                            // 数据
+                                                            data: msg,
+                                                            //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
+                                                            dataType: "json",
+                                                            success: function (res) {
+                                                                console.log(res);
+                                                                var data = res;
+                                                                if (data.status == 200) {
+                                                                    console.log(res);
+                                                                    alert(data.data[0].info);
+                                                                    location.href = "./table-list.html";
+                                                                    // location.href = "./admin/index.html";
+                                                                } else if (data.status == 400) {
+                                                                    // console.log(res);
+                                                                    alert(data.data[0].info);
+                                                                    // location.href = "./table-list.html";
+                                                                } else {
+                                                                    // alert("111");
+                                                                }
+                                                            },
+                                                            error: function () {
+                                                                console.log("请求出错！");
+                                                            }
+                                                        });
+
+                                                    });
+
+
+                                                </script>
                                             </div><!-- /.modal-content -->
                                         </div><!-- /.modal-dialog -->
                                     </div><!-- /.modal -->
                                 </div>
-                                <!-- <div class="am-u-lg-12 am-cf">
-                                    <div class="am-fr">
-                                        <ul class="am-pagination tpl-pagination">
-                                            <li class="am-disabled"><a href="#">«</a></li>
-                                            <li class="am-active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">»</a></li>
-                                        </ul>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -844,5 +800,86 @@
     <script src="assets/js/dataTables.responsive.min.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
+<script>
+    // $(function () {
+
+    //     // console.log(mgdphone);
+    // })
+    // $(window).load(function () {         //等价于window.onload = function
+    //     alert("加载完成");
+    //     var lll = $("#uphne_msg1").text()
+    //     console.log(lll);
+    // });
+    // window.onload = function () {
+
+    // }
+    // $(document).ready(function () {
+
+    // });
+    function xgfz1() {
+        // alert("加载完成");
+        var xgp = $("#uphne_msg1").text()//账号
+        var xgpass = $("#upass_msg1").text()//mima
+        var xgmsg = $("#rmsg_msg1").text()//msg
+        var xgadd = $("#radd_msg1").text()//打卡地点
+        var xgtype = $("#type_msg1").text()//类型
+        var xgtime = $("#rtime_msg1").text()//添加时间
+        var xgrtime = $("#rdtime_msg1").text()//打卡时间周期
+        // console.log(xgrtime);
+        var xgrminute = xgrtime.slice(0, 2)
+        var xgrhour = xgrtime.slice(3, 4)
+        var xgrweek_start = xgrtime.slice(9, 10)
+        var xgrweek_end = xgrtime.slice(11, 12)
+        // console.log(xgrweek_end);
+
+
+
+
+
+
+        $("#xgmgdphone").val(xgp), //提交修改手机号
+            $("#xgpasswd").val(xgpass),//提交修改密码
+            $("#xgaddress").val(xgadd),//提交修改打卡地址
+            $("#xguinfo").val(xgmsg),//提交修改打卡信息
+            $("#xgyou_type").val(xgtype),//提交修改类型
+            $("#xghour").val(xgrhour),     //提交修改小时
+            $("#xgminute").val(xgrminute),    //提交修改分钟
+            $("#xgweek_start").val(xgrweek_start),   //提交修改开始时间
+            $("#xgweek_end").val(xgrweek_end)  //提交修改结束时间
+
+    }
+    function xgfz2() {
+        // alert("加载完成");
+        var xgp = $("#uphne_msg2").text()
+        var xgpass = $("#upass_msg2").text()
+        var xgmsg = $("#rmsg_msg2").text()
+        var xgadd = $("#radd_msg2").text()
+        var xgtype = $("#type_msg2").text()
+        var xgtime = $("#rtime_msg2").text()
+        var xgrtime = $("#rdtime_msg2").text()
+
+        var xgrminute = xgrtime.slice(0, 2)
+        var xgrhour = xgrtime.slice(3, 4)
+        var xgrweek_start = xgrtime.slice(9, 10)
+        var xgrweek_end = xgrtime.slice(11, 12)
+
+
+        // console.log(lll);
+        // alert(xgp);
+        $("#xgmgdphone").val(xgp), //提交修改手机号
+            $("#xgpasswd").val(xgpass),//提交修改密码
+            $("#xgaddress").val(xgadd),//提交修改打卡地址
+            $("#xguinfo").val(xgmsg),//提交修改打卡信息
+            $("#xgyou_type").val(xgtype),//提交修改类型
+            $("#xghour").val(xgrhour),     //提交修改小时
+            $("#xgminute").val(xgrminute),    //提交修改分钟
+            $("#xgweek_start").val(xgrweek_start),   //提交修改开始时间
+            $("#xgweek_end").val(xgrweek_end)  //提交修改结束时间
+
+    }
+
+
+
+</script>
 
 </html>
