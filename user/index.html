@@ -150,7 +150,6 @@
 
             <!-- 菜单 -->
             <ul class="sidebar-nav">
-                <!-- <li class="sidebar-nav-heading">Components <span class="sidebar-nav-heading-info"> 附加组件</span></li> -->
                 <li class="sidebar-nav-link">
                     <a href="index.html" class="active">
                         <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
@@ -163,21 +162,10 @@
                 </li>
             </ul>
         </div>
-
-
         <!-- 内容区域 -->
         <div class="tpl-content-wrapper">
             <div class="container-fluid am-cf">
-                <!-- <div class="row">
-                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-9">
-                        <div class="page-header-heading"><span class="am-icon-home page-header-heading-icon"></span>
-                            部件首页 <small>Amaze UI</small></div>
-                        <p class="page-header-description">Amaze UI 含近 20 个 CSS 组件、20 余 JS 组件，更有多个包含不同主题的 Web 组件。</p>
-                    </div>
-                    <div class="am-u-lg-3 tpl-index-settings-button">
-                        <button type="button" class="page-header-button"><span class="am-icon-paint-brush"></span>
-                            设置</button>
-                    </div> -->
+
                 <form class="form-horizontal" id="form">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">产品名称</label>
@@ -190,13 +178,7 @@
                             </select>
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label class="col-sm-2 control-label">产品数量</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" name="pNum" check-type="number"
-                                check-type-msg="请输入数值" />
-                        </div>
-                    </div> -->
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label">产品类型</label>
                         <div class="col-sm-4">
@@ -220,22 +202,14 @@
                 </form>
             </div>
             <script>
-                // $(".image").error(function () {
-                //     $(".image").replaceWith("<p><b>二维码未加载！</b></p>");
-                // });
+
                 $("#form-submit").click(function () {
                     var dic = {
                         price: $("#pName option:selected").val(),
                         notice: $("#pType option:selected").val(),
                     };
-                    // console.log(dic);
 
-                    // console.log(dic);
-                    // 将获取的字符串转换为 json数据
                     var msg = JSON.stringify(dic);
-                    // var $test = $(".test");
-                    // ajax发送
-
                     $.ajax({
                         // 发送到的地址
                         url: "/../IndexViews/CreatePay/",
@@ -248,47 +222,18 @@
                         //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
                         dataType: "json",
                         success: function (res) {
-                            console.log(res);
                             var data = res;
                             if (data.status == 200) {
-
-                                console.log(res);
-                                // alert();
                                 let urlimg = data.data[0].url;
-                                //     console.log(urlimg);
-                                // alert(<img src='urlimg' alt=''>);
-                                // $("#form-submit").click(function () {
-                                //     // alert(111);
-                                //     msg += "<div>"
-                                //         + "<img src=\"urlimg\" >"
-                                //     msg += "</div>";
-                                //     $("#form-submit").html(msg);
-                                // })
-
                                 $(".main1").click(function () {
                                     $(".qrcode").show();
                                 });
-
-                                // $(function () {
-                                //     $(".main1").click(function () {
-                                //         // alert(1111);
-                                //         $("#qrcode").fadeIn("slow");
-                                //     });
-                                //     $("#qrcode").click(function () {
-                                //         $("#qrcode").fadeOut("slow");
-                                //     })
-                                // });
-
                                 $(".image").attr('src', urlimg);
 
 
                             } else if (data.status == 400) {
-                                // console.log(res);
                                 alert('aaaa');
-                                // location.href = "./table-list.html";
-
                             } else {
-                                // alert("111");
                             }
                         },
                         error: function () {
@@ -313,72 +258,7 @@
     <script src="assets/js/amazeui.datatables.min.js"></script>
     <script src="assets/js/dataTables.responsive.min.js"></script>
     <script src="assets/js/app.js"></script>
-    <script>
-                // /IndexViews/Logout/
-        // function doLogout() {
-            // var data = {};
-            //配置的登出的url，
-            // $.post('/../IndexViews/Logout/', data, function (resp) {
-            //     console.log(resp);
-            //     if (resp.code == 200) {
-            //         alert('退出成功');
-            //         // window.location.href = "../index.html";
-            //     } else {
-            //         alert(resp.msg);
-            //     }
-            // });
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "/../IndexViews/LoginOut/",
-        //         // data:$("form").serialize(),
-        //         dataType: 'json',
-        //         success: function (data) {
-        //             console.log(data);
-        //             if (data.status == 200) {
-        //                 alert(data.info);
-        //                 // window.location.href="{:url('index/index')}";
-        //             } else {
-        //                 alert(data.info);
-        //             }
-        //         }
-        //     });
-        // }
 
-        // $(function () {
-        //     $("#logout").on('click', function (event) {
-        //         $.ajax({
-        //             type: "POST",
-        //             url: "/../IndexViews/Logout/",
-        //             // data:$("form").serialize(),
-        //             dataType: 'json',
-        //             success: function (data) {
-        //                 if (data.status == 200) {
-        //                     alert(data.info);
-        //                     // window.location.href="{:url('index/index')}";
-        //                 } else {
-        //                     alert(data.info);
-        //                 }
-        //             }
-        //         });
-        //     })
-        // })
-
-        // $(function () {
-        //     $.ajax({
-        //         url: "/../IndexViews/User/",//ajax请求要发送的地址
-        //         dataType: "json",//响应数据的类型
-        //         type: "POST",//发送请求的方式
-        //         success: function (data) {
-        //             //data为服务器端响应的数据
-        //             rs = data;
-        //             if (rs.status == "400") {
-        //                 window.location.href = "../login.html";
-        //             }
-        //         }
-        //     });
-        // })
-
-    </script>
 </body>
 
 </html>
