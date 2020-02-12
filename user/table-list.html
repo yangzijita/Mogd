@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="assets/css/app.css">
     <script src="assets/js/jquery.min.js"></script>
+
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -51,6 +52,9 @@
                         $("#imgqq").attr('src', rs.data.QQimg);
                         $("#idname").text(rs.data.phone);
                         $("#idname1").text(rs.data.phone);
+                        var rdata = rs.data.expire.slice(0, 10)
+
+                        $("#iddate").text(rdata);
 
                     }
                 }
@@ -81,13 +85,7 @@
 
                     </span>
                 </div>
-                <!-- 搜索 -->
-                <div class="am-fl tpl-header-search">
-                    <form class="tpl-header-search-form" action="javascript:;">
-                        <button class="tpl-header-search-btn am-icon-search"></button>
-                        <input class="tpl-header-search-box" type="text" placeholder="搜索内容...">
-                    </form>
-                </div>
+
                 <!-- 其它功能-->
                 <div class="am-fr tpl-header-navbar">
                     <ul>
@@ -133,6 +131,11 @@
                         <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
                         <span id="idname1">正在获取信息</span>
                     </span>
+                    <div class="user-panel-logged-in-text">
+                        <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+                        <span>会员有效期:</span>
+                        <span id="iddate"></span>
+                    </div>
                 </div>
             </div>
             <!-- 菜单 -->
@@ -268,7 +271,6 @@
                                                                 placeholder="设置打卡的结束时间(单位：周；如 5,就是到周五结束)">
                                                         </div>
                                                     </div>
-
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
@@ -694,9 +696,6 @@
         var xgrweek_start = xgrtime.slice(9, 10)
         var xgrweek_end = xgrtime.slice(11, 12)
         // console.log(xgrweek_end);
-
-
-
 
 
 
