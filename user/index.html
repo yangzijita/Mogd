@@ -78,7 +78,7 @@
         <header>
             <!-- logo -->
             <div class="am-fl tpl-header-logo">
-                <a href="javascript:;"><img src="http://520.lyscholar.cn/log.png" alt=""></a>
+                <a href="javascript:;"><img src="http://www.mogding.cn/images/log.png" alt=""></a>
             </div>
             <!-- 右侧内容 -->
             <div class="tpl-header-fluid">
@@ -100,7 +100,7 @@
                     <ul>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
-                            <a href="javascript:;">欢迎你, <span id="idname">admin</span> </a>
+                            <a href="javascript:;">欢迎你, <span id="idname">尊敬的用户</span> </a>
                         </li>
 
 
@@ -137,14 +137,12 @@
             <div class="tpl-sidebar-user-panel">
                 <div class="tpl-user-panel-slide-toggleable">
                     <div class="tpl-user-panel-profile-picture">
-                        <img id="imgqq" src="assets/img/user04.png" alt="">
+                        <img id="imgqq" src="/" alt="">
                     </div>
                     <span class="user-panel-logged-in-text">
                         <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-                        <span id="idname1">禁言小张</span>
+                        <span id="idname1">正在获取信息</span>
                     </span>
-                    <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span>
-                        账号设置</a>
                 </div>
             </div>
 
@@ -152,12 +150,12 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-nav-link">
                     <a href="index.html" class="active">
-                        <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 产品购买
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
                     <a href="table-list.html">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 任务
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 打卡账号
                     </a>
                 </li>
             </ul>
@@ -172,14 +170,15 @@
                         <div class="col-sm-4">
                             <select name="pName" class="form-control" id="pName" required="true"
                                 required-message="请选择产品时间">
-                                <option value="18">test(18)</option>
-                                <option value="35">test(35)</option>
-                                <option value="50">test3(50)</option>
+				<option value="0.18">体验签到一天(0.18元)</option>
+                                <option value="18">签到一个月(18元)</option>
+                                <option value="35">签到两个月(35元)</option>
+                                <option value="50">签到三个月(50元)</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="form-group">
+                  <!--  <div class="form-group">
                         <label class="col-sm-2 control-label">产品类型</label>
                         <div class="col-sm-4">
                             <select name="pType" class="form-control" id="pType" required="true"
@@ -189,10 +188,12 @@
                                 <option value="666">test2</option>
                             </select>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="form-group">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-4">
+			    <p  style="font-size:30px;color:orange">使用说明：选择商品→点击购买→等待出现二维码→扫描二维码付款
+→添加打卡账号(请使用微信付款)</p>
                             <input type="button" class="main1" id="form-submit" value="购 买" />
                             <div class="qrcode" style="display: none;">
                                 <img class="image" width="100%" height="100%" src="test" alt="点击购买扫描二维码" />

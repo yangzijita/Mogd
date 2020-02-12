@@ -93,7 +93,7 @@
                     <ul>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
-                            <a href="javascript:;">欢迎你, <span id="idname">admin</span> </a>
+                            <a href="javascript:;">欢迎你, <span id="idname">尊敬的用户</span> </a>
                         </li>
 
 
@@ -127,26 +127,24 @@
             <div class="tpl-sidebar-user-panel">
                 <div class="tpl-user-panel-slide-toggleable">
                     <div class="tpl-user-panel-profile-picture">
-                        <img id="imgqq" src="assets/img/user04.png" alt="">
+                        <img id="imgqq" src="/" alt="">
                     </div>
                     <span class="user-panel-logged-in-text">
                         <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-                        <span id="idname1">禁言小张</span>
+                        <span id="idname1">正在获取信息</span>
                     </span>
-                    <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span>
-                        账号设置</a>
                 </div>
             </div>
             <!-- 菜单 -->
             <ul class="sidebar-nav">
                 <li class="sidebar-nav-link">
                     <a href="index.html">
-                        <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 产品购买
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
                     <a href="table-list.html">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 任务
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 打卡账号
                     </a>
                 </li>
             </ul>
@@ -197,7 +195,7 @@
                                                         </label> -->
                                                         <div class="col-sm-12">
                                                             <input type="text" class="form-control" id="mgdphone"
-                                                                name="mgdphone" value="" placeholder="mobile">
+                                                                name="mgdphone" value="" placeholder="蘑菇丁账号">
                                                         </div>
                                                     </div>
 
@@ -205,7 +203,7 @@
                                                         <!-- <label for="lastname" class="col-sm-3 control-label">用户名</label> -->
                                                         <div class="col-sm-12">
                                                             <input type="text" class="form-control" name="user_name"
-                                                                value="" id="passwd" placeholder="蘑菇钉密码">
+                                                                value="" id="passwd" placeholder="蘑菇丁密码">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -231,8 +229,8 @@
                                                             <!-- <input type="text" class="form-control" name="address"
                                                                 value="" id="type" placeholder="打卡类型（START，END）"> -->
                                                             <select id="you_type" class="form-control">
-                                                                <option value="START">START</option>
-                                                                <option value="END">END</option>
+                                                                <option value="START">上班</option>
+                                                                <option value="END">下班</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -241,7 +239,7 @@
                                                         <div class="col-sm-12">
                                                             <input type="text" class="form-control" name="address"
                                                                 value="" id="hour" maxlength="2"
-                                                                placeholder="设置打卡时间（单位：整点；如8点）">
+                                                                placeholder="设置打卡时间（单位：整点；如8(就是早上8点)）">
 
                                                         </div>
                                                     </div>
@@ -250,7 +248,7 @@
                                                         <div class="col-sm-12">
                                                             <input type="text" class="form-control" name="address"
                                                                 value="" id="minute" maxlength="2"
-                                                                placeholder="设置打卡时间（单位：分；如 30分）">
+                                                                placeholder="设置打卡时间（单位：分；如 30）">
 
                                                         </div>
                                                     </div>
@@ -259,7 +257,7 @@
                                                         <div class="col-sm-12">
                                                             <input type="text" class="form-control" name="address"
                                                                 value="" id="week_start" maxlength="2"
-                                                                placeholder="打卡的开始时间">
+                                                                placeholder="打卡的开始时间(单位：周；如 1,就是从周一开始)">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -267,7 +265,7 @@
                                                         <div class="col-sm-12">
                                                             <input type="text" class="form-control" name="address"
                                                                 value="" id="week_end" maxlength="2"
-                                                                placeholder="设置打卡的结束时间">
+                                                                placeholder="设置打卡的结束时间(单位：周；如 5,就是到周五结束)">
                                                         </div>
                                                     </div>
 
@@ -277,7 +275,7 @@
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                                                 </button>
                                                 <button type="submit" id="adduced" class="btn btn-primary">
-                                                    提交
+                                                    确认添加
                                                 </button><span id="tip"> </span>
                                             </div>
                                         </div>
