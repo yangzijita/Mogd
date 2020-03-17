@@ -94,7 +94,6 @@
           //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
           dataType: "json",
           success: function (res) {
-            // console.log(res);
             data = res;
             if (data.status == "200") {
               alert(data.data[0].info);

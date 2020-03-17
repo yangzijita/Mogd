@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>蘑菇丁打卡</title>
-    <meta name="description" content="蘑菇丁打卡">
-    <meta name="keywords" content="index">
+    <title>蘑菇钉打卡|云打卡|自动签到|修改定位|自动打卡</title>
+    <meta name="description" content="蘑菇丁自动打卡采用分布式服务，前端分离，24小时随时修改定位进行打卡签到">
+    <meta name="keywords" content="蘑菇丁,自动打卡,云签到,自动签到,蘑菇丁修改定位,工学云">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -98,6 +98,12 @@
                 <!-- 其它功能-->
                 <div class="am-fr tpl-header-navbar">
                     <ul>
+                        <li class="am-text-sm" style="height: 100%; margin-top: 10px;">
+                            <button type="button" class="am-btn am-btn-primary"
+                                data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0, width: 400, height: 225}">
+                                修改密码
+                            </button>
+                        </li>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
                             <a href="javascript:;">欢迎你, <span id="idname">尊敬的用户</span> </a>
@@ -109,10 +115,87 @@
                             </a>
                         </li>
                     </ul>
+
+
                 </div>
             </div>
 
         </header>
+        <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+            <div class="am-modal-dialog">
+                <div class="am-modal-hd">修改密码
+                    <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                </div>
+                <div class="am-modal-bd">
+                    <div class="am-form">
+                        <fieldset>
+                            <div class="am-form-group">
+                                <input type="password" id="oldpass" placeholder="旧密码" required />
+                            </div>
+                            <div class="am-form-group">
+                                <input type="password" id="doc-vld-pwd-1" placeholder="新密码~~~" required />
+                            </div>
+
+                            <div class="am-form-group">
+                                <input type="password" id="doc-vld-pwd-2" placeholder="请与上面输入的值一致"
+                                    data-equal-to="#doc-vld-pwd-1" required />
+                            </div>
+
+                            <button class="am-btn am-btn-secondary" onclick="login()">提交</button>
+                        </fieldset>
+                        <script type="text/javascript">
+                            function login() {
+                                var oldpass = $("#oldpass").val();
+                                var newpa1 = $("#doc-vld-pwd-1").val();
+                                var newpa2 = $("#doc-vld-pwd-2").val();
+
+                                if (newpa1 == newpa2) {
+                                    dic = {
+                                        oldpasswd: oldpass,
+                                        newpasswd: newpa1
+                                    }
+                                    var msg = JSON.stringify(dic);
+                                    $.ajax({
+                                        // 发送到的地址
+                                        url: "/../IndexViews/ResetPwd/",
+                                        //请求方式
+                                        type: "post",
+                                        //指定请求的数据格式为json
+                                        contentType: "application/json",
+                                        // 数据
+                                        data: msg,
+                                        //指定响应的格式为json,注意如果后台没有放回json类型的数据格式下方的success不会执行
+                                        dataType: "json",
+                                        success: function (res) {
+                                            var data = res;
+                                            if (data.status == 200) {
+                                                alert("密码修改成功");
+                                                // location.href = "./admin/index.html";
+                                                location.href = "../login.html";
+                                            } else if (data.status == 400) {
+                                                // console.log(res);
+                                                alert(data.data[0].info);
+                                            } else {
+                                                // alert("111");
+                                                alert(data.data[0].info);
+                                            }
+                                        },
+                                        error: function () {
+                                            console.log("请求出错！");
+                                        }
+                                    });
+                                } else {
+                                    alert("两次密码不相同")
+                                }
+
+
+
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- 风格切换 -->
         <div class="tpl-skiner">
             <div class="tpl-skiner-toggle am-icon-cog">
@@ -127,6 +210,7 @@
                 </div>
             </div>
         </div>
+
         <!-- 侧边导航栏 -->
         <div class="left-sidebar">
             <!-- 用户信息 -->
@@ -136,12 +220,12 @@
                         <img id="imgqq" src="/" alt="">
                     </div>
                     <span class="user-panel-logged-in-text">
-                        <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+                        <i class="am-icon-phone am-text-success tpl-user-panel-status-icon"></i>
                         <span id="idname1">正在获取信息</span>
 
                     </span>
                     <div class="user-panel-logged-in-text">
-                        <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+                        <i class="am-icon-bug am-text-success tpl-user-panel-status-icon"></i>
                         <span>会员有效期:</span>
                         <span id="iddate"></span>
                     </div>
@@ -160,9 +244,20 @@
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 打卡账号
                     </a>
                 </li>
+                <li class="sidebar-nav-link">
+                    <a href="log-task.html">
+                        <i class="am-icon-angellist sidebar-nav-link-logo"></i> 任务日志
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="pay-task.html">
+                        <i class="am-icon-paypal sidebar-nav-link-logo"></i> 支付记录
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- 内容区域 -->
+
         <div class="tpl-content-wrapper">
             <div class="container-fluid am-cf">
                 <form class="form-horizontal" id="form">
@@ -204,7 +299,7 @@
                     var msg = JSON.stringify(dic);
                     $.ajax({
                         // 发送到的地址
-                        url: "/../IndexViews/CreatePay/",
+                        url: "/../IndexViews/RechargeVipPay/",
                         //请求方式
                         type: "post",
                         //指定请求的数据格式为json
@@ -222,9 +317,6 @@
                                 // $(".qrcode").show();
                                 $(".qrcode").css('display', 'block');
                                 // });
-
-
-
                             } else if (data.status == 400) {
                                 alert('aaaa');
                             } else {

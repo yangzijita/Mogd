@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>蘑菇丁打卡</title>
+    <meta name="description" content="蘑菇丁打卡">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="蘑菇丁打卡" />
+    <script src="assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="./../js/myjs.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.css" rel="stylesheet">
+    <!-- Latest compiled and minified Locales -->
+    <script>
+
+
+    </script>
+    <style>
+        .delclass {
+            margin-top: 1%;
+        }
+    </style>
+</head>
+
+<body data-type="widgets">
+    <script src="assets/js/theme.js"></script>
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        <header>
+            <!-- logo -->
+            <div class="am-fl tpl-header-logo">
+                <a href="javascript:;"><img src="../images/log.png" alt=""></a>
+            </div>
+            <!-- 右侧内容 -->
+            <div class="tpl-header-fluid">
+                <!-- 侧边切换 -->
+                <div class="am-fl tpl-header-switch-button am-icon-list">
+                    <span>
+
+                    </span>
+                </div>
+
+                <!-- 其它功能-->
+                <div class="am-fr tpl-header-navbar">
+                    <ul>
+                        <!-- 欢迎语 -->
+                        <li class="am-text-sm tpl-header-navbar-welcome">
+                            <a href="javascript:;">欢迎你, <span id="idname">尊敬的用户</span> </a>
+                        </li>
+
+
+                        <!-- 退出 -->
+                        <li class="am-text-sm">
+                            <a href="/../IndexViews/LoginOut/">
+                                <span class="am-icon-sign-out"></span> 退出
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <!-- 风格切换 -->
+        <div class="tpl-skiner">
+            <div class="tpl-skiner-toggle am-icon-cog">
+            </div>
+            <div class="tpl-skiner-content">
+                <div class="tpl-skiner-content-title">
+                    选择主题
+                </div>
+                <div class="tpl-skiner-content-bar">
+                    <span class="skiner-color skiner-white" data-color="theme-white"></span>
+                    <span class="skiner-color skiner-black" data-color="theme-black"></span>
+                </div>
+            </div>
+        </div>
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar">
+            <!-- 用户信息 -->
+            <div class="tpl-sidebar-user-panel">
+                <div class="tpl-user-panel-slide-toggleable">
+                    <div class="tpl-user-panel-profile-picture">
+                        <img id="imgqq" src="/" alt="">
+                    </div>
+                    <span class="user-panel-logged-in-text">
+                        <i class="am-icon-phone am-text-success tpl-user-panel-status-icon"></i>
+                        <span id="idname1">正在获取信息</span>
+                    </span>
+                    <div class="user-panel-logged-in-text">
+                        <i class="am-icon-bug am-text-success tpl-user-panel-status-icon"></i>
+                        <span>会员有效期:</span>
+                        <span id="iddate"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="index.html">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 产品购买
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="table-list.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 打卡账号
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="log-task.html">
+                        <i class="am-icon-angellist sidebar-nav-link-logo"></i> 任务日志
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="pay-task.html">
+                        <i class="am-icon-paypal sidebar-nav-link-logo"></i> 支付记录
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- 内容区域 -->
+        <div class="tpl-content-wrapper">
+            <div class="row-content am-cf">
+                <div class="row">
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title  am-cf">日志列表</div>
+                            </div>
+                            <div class="widget-head am-cf">
+                                已经为您打卡：<span class="am-badge am-badge-danger am-round" id="cisu" value="">6</span>次
+
+                                <table id="tb-rz" class="am-table am-table-striped am-table-hover">
+                                    <!-- <thead>
+                                    <tr>
+                                        <th>签到用户手机号</th>
+                                        <th>签到时间</th>
+                                        <th>签到发表的信息</th>
+                                        <th>打卡类型</th>
+                                        <th>打卡地点</th>
+                                        <th>打卡状态</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Amaze UI</td>
+                                        <td>http://amazeui.org</td>
+                                        <td>2012-10-01</td>
+                                        <td>2012-10-01</td>
+                                        <td>2012-10-01</td>
+                                        <td>2012-10-01</td>
+                                    </tr>
+                                </tbody> -->
+                                </table>
+                                <!-- <script>
+                                $(document).ready(function () {
+                                    $('#tb-rz').DataTable()({
+                                        "processing": true,
+                                        "serverSide": true,
+                                        "ajax": "/../IndexViews/UserWorkLog/"
+                                    })
+                                });
+                            </script> -->
+                            </div>
+                            <script>
+                                $('#tb-rz').bootstrapTable({
+                                    method: 'post',
+                                    url: "/../IndexViews/UserWorkLog/",//请求路径
+                                    striped: true, //是否显示行间隔色
+                                    pageNumber: 1, //初始化加载第一页
+                                    pagination: true,//是否分页
+                                    sidePagination: 'client',//server:服务器端分页|client：前端分页
+                                    pageSize: 4,//单页记录数
+                                    pageList: [5, 10, 20, 30],//可选择单页记录数
+                                    showRefresh: true,//刷新按钮
+
+                                    queryParams: function (params) {//上传服务器的参数
+                                        var temp = {//如果是在服务器端实现分页，limit、offset这两个参数是必须的
+                                            // Name: $('#search_name').val(),
+                                            // Tel: $('#search_tel').val()
+                                            pageAt: "2", // 每页显示数量
+                                            quantity: "16", // SQL语句起始索引
+                                            //page : (params.offset / params.limit) + 1, //当前页码 
+
+
+                                        };
+                                        return temp;
+                                    },
+
+                                    columns: [{
+                                        title: '签到用户手机号',
+                                        field: 'fields.mogd_punch_mobile',
+                                        sortable: true
+                                    }, {
+                                        title: '签到时间',
+                                        field: 'fields.work_date',
+                                        sortable: true
+                                    }, {
+                                        title: '签到发表的信息',
+                                        field: 'fields.work_info',
+                                    }, {
+                                        title: '打卡类型',
+                                        field: 'fields.work_type',
+                                    }, {
+                                        title: '打卡地点',
+                                        field: 'fields.work_add',
+                                    },
+                                    {
+                                        title: '打卡状态',
+                                        field: 'fields.work_state',
+                                    }],
+                                    responseHandler: function (res) {
+                                        return {
+                                            // "total": res.total, //总页数
+                                            "rows": res.list,  //数据
+                                            "data": res
+                                        };
+                                    },
+                                    onLoadSuccess: function (data, rows) {//数据加载成功事件
+                                        // alert('data success');
+                                        // console.log(rows);
+                                        // console.log(data.data.total);
+                                        $("#cisu").text(data.data.total);
+                                        //设置默认值
+                                        //setEmptyValue();
+                                    },
+                                    onLoadError: function (data) {
+                                        alert(data);
+                                    }
+
+                                })
+
+                                // //value代表该列的值，row代表当前对象
+                                // function formatSex(value, row, index) {
+                                //     return value == 1 ? "男" : "女";
+                                //     //或者 return row.sex == 1 ? "男" : "女";
+                                // }
+
+                                //删除、编辑操作
+                                // function operation(value, row, index) {
+                                //     var htm = "<button>删除</button><button>修改</button>"
+                                //     return htm;
+                                // }
+
+                                //查询按钮事件
+                                // $('#search_btn').click(function () {
+                                //     $('#mytab').bootstrapTable('refresh', {
+                                //         url: 'user/getUserListPage'
+                                //     });
+                                // })
+
+
+
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="assets/js/amazeui.datatables.min.js"></script>
+    <script src="assets/js/dataTables.responsive.min.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+<!-- 编辑 -->
+<script>
+
+
+
+
+</script>
+
+</html>
